@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "svelte.enable-ts-plugin": true,
+    "[svelte]": {
+      "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "files.associations": {
+      "**/src/css/**/*.css": "tailwindcss"
+    },
+    "[javascript]": {
+      "editor.tabSize": 2
+    },
+    "[javascriptreact]": {
+      "editor.tabSize": 2
+    },
+    "[typescript]": {
+      "editor.tabSize": 2
+    },
+    "[typescriptreact]": {
+      "editor.tabSize": 2
+    },
+    "[html]": {
+      "editor.tabSize": 2
+    }
+  }
+}
