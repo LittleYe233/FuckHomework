@@ -10,7 +10,7 @@
       "editor.defaultFormatter": "svelte.svelte-vscode"
     },
     "files.associations": {
-      "**/src/css/**/*.css": "tailwindcss"
+      "**/src/**/*.css": "tailwindcss"
     },
     "[javascript]": {
       "editor.tabSize": 2
