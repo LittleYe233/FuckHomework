@@ -9,7 +9,7 @@
   function parseDateTime(dt: Date): string {
     return dt.toLocaleString('zh-CN', {
       dateStyle: 'full',
-      timeStyle: 'medium',
+      timeStyle: 'long',
       timeZone: 'Asia/Shanghai'
     });
   }
