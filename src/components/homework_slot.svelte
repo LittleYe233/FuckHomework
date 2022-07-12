@@ -23,23 +23,23 @@
     <tbody>
       <tr>
         <td class="pr-6 font-bold">Semester</td>
-        <td>{metadata.semester ?? ""}</td>
+        <td>{metadata.semester ?? ''}</td>
       </tr>
       <tr>
         <td class="pr-6 font-bold">Subject</td>
-        <td>{metadata.subject ?? ""}</td>
+        <td>{metadata.subject ?? ''}</td>
       </tr>
       <tr>
         <td class="pr-6 font-bold">Chapter</td>
-        <td>{metadata.chapter ?? ""}</td>
+        <td>{metadata.chapter ?? ''}</td>
       </tr>
       <tr>
         <td class="pr-6 font-bold">Due time</td>
-        <td>{metadata.dueTime ? parseDateTime(metadata.dueTime) : ""}</td>
+        <td>{metadata.dueTime ? parseDateTime(metadata.dueTime) : ''}</td>
       </tr>
       <tr>
         <td class="pr-6 font-bold">Submission method</td>
-        <td>{metadata.submissionMethod ?? ""}</td>
+        <td>{metadata.submissionMethod ?? ''}</td>
       </tr>
     </tbody>
   </table>
