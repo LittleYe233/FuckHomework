@@ -16,7 +16,7 @@
 </script>
 
 <!-- single homework -->
-<div class="relative my-4 rounded-2xl bg-white px-8 py-6 hover:shadow-xl ring-1 ring-gray-900/5">
+<div class="relative my-4 rounded-2xl bg-white px-8 py-6 ring-1 ring-gray-900/5 transition ease-in-out hover:shadow-xl duration-300">
   <h3 class="mb-3 text-xl font-bold">{metadata.title}</h3>
   <!-- properties -->
   <table class="homework-slot">
