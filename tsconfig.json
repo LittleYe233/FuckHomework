@@ -11,7 +11,9 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "$lib": ["src/lib"],
+      "$lib/*": ["src/lib/*"]
     }
   }
 }
