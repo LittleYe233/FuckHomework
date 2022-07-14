@@ -7,9 +7,11 @@ export async function get({ params }) {
   return {
     status: 200,
     // force to be a JSON object
-    body: JSON.parse(JSON.stringify({
-      hw_id: params.hw_id,
-      metadata: assignment
-    }))
+    body: JSON.parse(
+      JSON.stringify({
+        hw_id: params.hw_id,
+        metadata: assignment
+      })
+    )
   };
-};
+}
