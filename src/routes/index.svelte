@@ -12,8 +12,8 @@
     <h2 class="mb-4 text-2xl font-bold">Homework list</h2>
     <!-- Homework list container -->
     <div>
-      {#each homeworkSlots as slot}
-        <HomeworkSlot metadata={slot} />
+      {#each homeworkSlots as slot, index}
+        <HomeworkSlot metadata={slot} linkable={true} hw_id={(index + 1).toString()} />
       {/each}
     </div>
   </div>
