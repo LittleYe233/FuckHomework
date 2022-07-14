@@ -22,6 +22,9 @@ const config = defineConfig(async () => {
     define: {
       __PROJECT_CONFIG__: JSON.stringify(cfg),
       __PROJECT_ROOT__: `"${__dirname}"`
+    },
+    optimizeDeps: {
+      include: ['jquery']
     }
   };
 });
