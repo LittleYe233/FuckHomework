@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "config.schema.json",
+  "type": "object",
+  "title": "Config",
+  "description": "Project configuration",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "description": "The version number of the project configuration.",
+      "minimum": 1,
+      "maximum": 1,
+      "default": 1
+    },
+    "assignments": {
+      "type": "array",
+      "description": "An array of configurations of assignments.",
+      "items": {
+        "$ref": "./assignment.schema.json"
+      }
+    }
+  },
+  "required": ["version"]
+}

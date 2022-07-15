@@ -30,6 +30,12 @@
     },
     "[json]": {
       "editor.tabSize": 2
-    }
+    },
+    "json.schemas": [
+      {
+        "fileMatch": ["/config.json", "/config.example.json"],
+        "url": "/schemas/config.schema.json"
+      }
+    ]
   }
 }
