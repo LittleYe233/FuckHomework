@@ -1,8 +1,7 @@
 <script lang="ts">
   import HomeworkSlot from '~/components/homework_slot.svelte';
-  import type { ProjectConfig } from '~/lib/types';
+  import { cfg } from '~/lib/config';
 
-  const cfg: ProjectConfig = __PROJECT_CONFIG__;
   const homeworkSlots = cfg.assignments ?? [];
 </script>
 
