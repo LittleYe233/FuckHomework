@@ -14,9 +14,17 @@ export interface ProjectServerConfig {
 }
 
 export type AssignmentConfig = HomeworkMetadata;
+export interface RawAssignmentConfig extends AssignmentConfig {
+  // JSON doesn't directly support `Date` object.
+  dueTime?: string | null;
+}
 
 export interface ProjectConfig {
   version: number;
   server?: ProjectServerConfig;
   assignments?: AssignmentConfig[];
+}
+
+export interface RawProjectConfig extends ProjectConfig {
+  assignments?: RawAssignmentConfig[];
 }
