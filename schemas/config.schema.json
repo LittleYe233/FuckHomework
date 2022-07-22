@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/schema",
   "$id": "config.schema.json",
   "type": "object",
-  "title": "Config",
   "description": "Project configuration",
   "properties": {
     "version": {
@@ -12,12 +11,11 @@
       "maximum": 1,
       "default": 1
     },
-    "assignments": {
-      "type": "array",
-      "description": "An array of configurations of assignments.",
-      "items": {
-        "$ref": "./assignment.schema.json"
-      }
+    "server": {
+      "$ref": "./server.schema.json"
+    },
+    "homework": {
+      "$ref": "./homework.schema.json"
     }
   },
   "required": ["version"]
