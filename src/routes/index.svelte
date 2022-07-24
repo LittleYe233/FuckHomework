@@ -12,7 +12,7 @@
     <!-- Homework list container -->
     <div>
       {#each homeworkSlots as slot, index}
-        <HomeworkSlot metadata={slot} linkable={true} hw_id={(index + 1).toString()} />
+        <HomeworkSlot metadata={slot} linkable={true} hw_id={index.toString()} />
       {/each}
     </div>
   </div>

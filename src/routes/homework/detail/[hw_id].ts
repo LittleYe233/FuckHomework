@@ -2,7 +2,7 @@ import { cfg } from '~/lib/config';
 import type { RequestHandler } from '~/../.svelte-kit/types/src/routes/homework/detail/__types/[hw_id]';
 
 export const get: RequestHandler = async ({ params }) => {
-  const assignment = cfg.homework.entries[parseInt(params.hw_id) - 1];
+  const assignment = cfg.homework.entries[parseInt(params.hw_id)];
 
   return {
     status: 200,
