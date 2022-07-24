@@ -1,4 +1,6 @@
 <script lang="ts">
+  export let hw_id: string;
+
   let uploadedFiles: FileList | null | undefined;
 
   const submitHomework: svelte.JSX.EventHandler<SubmitEvent, HTMLFormElement> = async (e) => {
@@ -25,7 +27,7 @@
     let blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
 
     // send request
-    return await fetch('/homework/upload/_test', {
+    return await fetch(`/homework/upload/${hw_id}`, {
       method: 'POST',
       headers: [['Content-Type', 'application/octet-stream']],
       body: blob

@@ -17,6 +17,6 @@
   </div>
   <div>
     <h2 class="mb-4 text-2xl font-bold">Control Pad</h2>
-    <HomeworkUpload />
+    <HomeworkUpload {hw_id} />
   </div>
 </div>
