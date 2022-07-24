@@ -2,7 +2,7 @@
   import HomeworkSlot from '~/components/homework_slot.svelte';
   import { cfg } from '~/lib/config';
 
-  const homeworkSlots = cfg.assignments ?? [];
+  const homeworkSlots = cfg.homework.entries;
 </script>
 
 <div class="relative flex min-h-screen flex-col overflow-hidden bg-gray-100 px-8 py-6 font-serif sm:py-6">

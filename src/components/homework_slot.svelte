@@ -3,18 +3,7 @@
   export let linkable: boolean;
   export let hw_id: string;
 
-  /**
-   * Parse `Date` instance to formatted datetime string.
-   * @param dt a `Date` instance
-   * @note The locale is forced to zh-CN and the time zone Asia/Shanghai now.
-   */
-  function parseDateTime(dt: Date): string {
-    return dt.toLocaleString('zh-CN', {
-      dateStyle: 'full',
-      timeStyle: 'long',
-      timeZone: 'Asia/Shanghai'
-    });
-  }
+  import { parseDateTime } from '~/lib/config';
 </script>
 
 <!-- single homework -->
@@ -37,7 +26,7 @@
       </tr>
       <tr>
         <td class="pr-6 font-bold">Due time</td>
-        <td>{metadata.dueTime ? parseDateTime(metadata.dueTime) : ''}</td>
+        <td>{parseDateTime(metadata.dueTime)}</td>
       </tr>
       <tr>
         <td class="pr-6 font-bold">Submission method</td>
