@@ -30,11 +30,11 @@ export const DEFAULT_ASSIGNMENT_CONFIG: Record<string, Omit<AssignmentConfig, 't
 };
 
 /**
-   * Parse `Date` instance to formatted datetime string.
-   * @param dt a `Date` instance or null
-   * @note The locale is forced to zh-CN and the time zone Asia/Shanghai now.
-   * @note Return an empty string if passed null.
-   */
+ * Parse `Date` instance to formatted datetime string.
+ * @param dt a `Date` instance or null
+ * @note The locale is forced to zh-CN and the time zone Asia/Shanghai now.
+ * @note Return an empty string if passed null.
+ */
 export function parseDateTime(dt: Date | null): string {
   if (dt === null) {
     return '';
@@ -54,7 +54,7 @@ export function parseProjectConfig(): ProjectConfig {
     throw TypeError(`invalid version number: ${_ver}`);
   }
   const cfg: ProjectConfig = lodash.merge({}, DEFAULT_CONFIG[_ver], original_cfg);
-  cfg.homework.entries = cfg.homework.entries.map(a => {
+  cfg.homework.entries = cfg.homework.entries.map((a) => {
     const assignment = lodash.merge({}, DEFAULT_ASSIGNMENT_CONFIG[_ver], a);
     if (typeof assignment.title === 'undefined') {
       throw ReferenceError('assignment has no title');
@@ -72,7 +72,7 @@ export function parseProjectConfig(): ProjectConfig {
     const _a: AssignmentConfig = assignment;
     return _a;
   });
-  
+
   return cfg;
 }
 
@@ -88,20 +88,25 @@ export function getVarSubstitutions(config: ProjectConfig, hw_id: number): VarSu
     homeworkDueTime: parseDateTime(et.dueTime),
     homeworkSubmissionMethod: et.submissionMethod
   };
-};
+}
 
 /**
  * Parse variables in the given string.
- * 
+ *
  * @example
  * parseVars("${homeworkTitle}/foo/bar", config, 1) === "Title_of_Homework_with_ID_1/foo/bar"
- * 
+ *
  * @param str the string to be variable-parsed
  * @param config project config
  * @param hw_id homework ID
  */
 export function parseVars(str: string, config: ProjectConfig, hw_id: number): string {
   const varsubs = getVarSubstitutions(config, hw_id);
-  const re = new RegExp(Object.keys(varsubs).map(v => `\\$\{${v}}`).join('|'), 'g');
-  return str.replace(re, matched => varsubs[matched]);
-};
+  const re = new RegExp(
+    Object.keys(varsubs)
+      .map((v) => '\\${' + v + '}')
+      .join('|'),
+    'g'
+  );
+  return str.replace(re, (matched) => varsubs[matched.slice(2, matched.length - 1)]);
+}
