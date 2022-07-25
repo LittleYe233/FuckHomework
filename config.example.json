@@ -16,7 +16,17 @@
         "subject": "Subject A",
         "chapter": "Chapter I, Section 1.1",
         "dueTime": "2022-07-12T10:50:28+08:00",
-        "submissionMethod": "Uploading files"
+        "submissionMethod": "Uploading files",
+        "rules": [
+          {
+            "type": "filename_check",
+            "priority": "whitelist",
+            "whitelist": [
+              "${studentName}-${studentNo}.txt"
+            ],
+            "blacklist": []
+          }
+        ]
       },
       {
         "title": "Homework 2",
