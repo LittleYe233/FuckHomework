@@ -33,6 +33,17 @@
       "type": "string",
       "description": "Method of submitting an assignment.",
       "enum": ["Uploading files"]
+    },
+    "rules": {
+      "type": "array",
+      "description": "Rules of the assignment.",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "./rules/filename_check.json"
+          }
+        ]
+      }
     }
   },
   "required": ["title"]
