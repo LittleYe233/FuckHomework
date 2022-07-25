@@ -36,13 +36,18 @@
       headers: [['Content-Type', 'application/octet-stream']],
       body: blob
     })
-      .then((resp) => (async () => {
-        return 'Response: ' + JSON.stringify({
-          status: resp.status,
-          statusText: resp.statusText,
-          text: await resp.text()
-        });
-      })())
+      .then((resp) =>
+        (async () => {
+          return (
+            'Response: ' +
+            JSON.stringify({
+              status: resp.status,
+              statusText: resp.statusText,
+              text: await resp.text()
+            })
+          );
+        })()
+      )
       .catch((err) => {
         return 'Error: ' + JSON.stringify(err);
       });
@@ -52,7 +57,7 @@
   let promise: Promise<any>;
   const submitClickFunc: svelte.JSX.EventHandler<SubmitEvent, HTMLFormElement> = (e) => {
     promise = submitHomework(e);
-  }
+  };
 </script>
 
 <div class="relative my-4 rounded-2xl bg-white px-8 py-6 ring-1 ring-gray-900/5 transition ease-in-out hover:shadow-xl duration-300">
@@ -71,12 +76,12 @@
   </form>
   <div class="relative mt-2">
     <h4 class="mb-2 text-lg font-bold">Result</h4>
-    <p>
+    <code class="break-all">
       {#await promise}
         Awaiting result...
-      {:then resp} 
+      {:then resp}
         {resp}
       {/await}
-    </p>
+    </code>
   </div>
 </div>
