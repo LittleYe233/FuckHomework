@@ -2,7 +2,7 @@ import { DeepRequired } from 'utility-types';
 
 /**
  * Homework metadata passed to `HomeworkSlot` svelte component.
- * 
+ *
  * @param title homework title
  * @param content homework content (shown in detail page)
  * @param semester corresponding semester
@@ -23,4 +23,12 @@ export interface RawHomeworkMetadata {
 export interface HomeworkMetadata extends DeepRequired<RawHomeworkMetadata> {
   // JSON doesn't directly support `Date` object.
   dueTime: Date | null;
-};
+}
+
+export interface FileUploadData {
+  type: string,
+  size: number,
+  name: string,
+  // text: string,
+  text64: string // Base64-encoded string, representing raw content of the file
+}

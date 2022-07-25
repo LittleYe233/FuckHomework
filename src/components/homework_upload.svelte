@@ -1,6 +1,9 @@
 <script lang="ts">
   export let hw_id: string;
 
+  import base64ArrayBuffer from '~/lib/base64ArrayBuffer';
+  import type { FileUploadData } from '~/lib/types/components';
+
   let uploadedFiles: FileList | null | undefined;
 
   const submitHomework: svelte.JSX.EventHandler<SubmitEvent, HTMLFormElement> = async (e) => {
@@ -9,7 +12,7 @@
     }
 
     // read all files and convert to a `Blob` object
-    let data: Array<{ type: string; size: number; name: string; text: string }> = [];
+    let data: FileUploadData[] = [];
 
     for (let i = 0; i < uploadedFiles.length; ++i) {
       let file = uploadedFiles.item(i);
@@ -19,7 +22,8 @@
           type: file.type,
           size: file.size,
           name: file.name,
-          text: await file.text()
+          // text: await file.text(),
+          text64: base64ArrayBuffer(await file.arrayBuffer())
         });
       } catch (e) {}
     }
