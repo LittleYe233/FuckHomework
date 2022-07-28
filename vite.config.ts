@@ -13,9 +13,6 @@ const config = defineConfig(async () => {
         '~': fileURLToPath(new URL('./src', import.meta.url))
       }
     },
-    optimizeDeps: {
-      include: ['jquery']
-    },
     server: {
       fs: {
         strict: false
