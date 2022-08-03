@@ -10,3 +10,5 @@ export interface FileUploadData {
   // text: string,
   text64: string; // Base64-encoded string, representing raw content of the file
 }
+
+export { AssignmentRule } from './rules';

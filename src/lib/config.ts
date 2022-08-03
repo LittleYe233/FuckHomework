@@ -25,7 +25,8 @@ export const DEFAULT_ASSIGNMENT_CONFIG: Record<string, Omit<AssignmentConfig, 't
     subject: '',
     chapter: '',
     dueTime: null,
-    submissionMethod: 'Uploading files'
+    submissionMethod: 'Uploading files',
+    rules: []
   }
 };
 

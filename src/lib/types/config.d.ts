@@ -1,4 +1,5 @@
 import { DeepRequired } from 'utility-types';
+import type { AssignmentRules } from './rules';
 
 /**
  * `server` section of project configuration.
@@ -33,6 +34,7 @@ export interface RawAssignmentConfig {
   chapter?: string;
   dueTime?: string | null;
   submissionMethod?: string;
+  rules?: AssignmentRules;
 }
 export interface AssignmentConfig extends DeepRequired<RawAssignmentConfig> {
   // JSON doesn't directly support `Date` object.
