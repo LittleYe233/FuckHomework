@@ -1,6 +1,7 @@
 <script lang="ts">
   export let hw_id: string;
 
+  import ConditionView from './condition_view.svelte';
   import base64ArrayBuffer from '~/lib/base64ArrayBuffer';
   import type { FileUploadData } from '~/lib/types/components';
 
@@ -64,8 +65,7 @@
   <h3 class="mb-3 text-xl font-bold">Upload homework</h3>
   <!-- detailed information -->
   <p>Please upload your homework files and make sure they meet the conditions below:</p>
-  <!-- conditions -->
-  <ul class="mx-4 my-4 list-inside list-disc" />
+  <ConditionView />
   <form on:submit|preventDefault={submitClickFunc} class="relative flex flex-col mb-2">
     <input type="file" multiple bind:files={uploadedFiles} class="mb-1.5" />
     <input

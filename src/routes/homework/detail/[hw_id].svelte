@@ -1,6 +1,6 @@
 <script lang="ts">
   import HomeworkSlot from '~/components/homework_slot.svelte';
-  import HomeworkUpload from '~/components/homework_upload.svelte';
+  import HomeworkUpload from '~/components/homework_upload/index.svelte';
   export let hw_id: string;
   export let metadata: import('~/lib/types/index').HomeworkMetadata;
 </script>
