@@ -1,4 +1,3 @@
-import type { HomeworkMetadata, RawHomeworkMetadata } from './components';
 import { DeepRequired } from 'utility-types';
 
 /**
@@ -15,12 +14,34 @@ export interface RawProjectServerConfig {
 }
 export type ProjectServerConfig = DeepRequired<RawProjectServerConfig>;
 
-export type AssignmentConfig = HomeworkMetadata;
-export type RawAssignmentConfig = RawHomeworkMetadata;
+/**
+ * Homework metadata passed to `HomeworkSlot` svelte component.
+ *
+ * @param title homework title
+ * @param content homework content (shown in detail page)
+ * @param semester corresponding semester
+ * @param subject homework subject
+ * @param chapter corresponding chapter
+ * @param dueTime due time of homework (null: no due time)
+ * @param submissionMethod method to submit homework
+ */
+export interface RawAssignmentConfig {
+  title: string;
+  content?: string;
+  semester?: string;
+  subject?: string;
+  chapter?: string;
+  dueTime?: string | null;
+  submissionMethod?: string;
+}
+export interface AssignmentConfig extends DeepRequired<RawAssignmentConfig> {
+  // JSON doesn't directly support `Date` object.
+  dueTime: Date | null;
+}
 
 export interface RawHomeworkConfig {
-  savePath?: string,
-  subFolderFormat?: string,
+  savePath?: string;
+  subFolderFormat?: string;
   entries?: RawAssignmentConfig[];
 }
 export interface HomeworkConfig extends DeepRequired<RawHomeworkConfig> {
@@ -37,11 +58,11 @@ export interface ProjectConfig extends DeepRequired<RawProjectConfig> {
 }
 
 export interface VarSubstitutions extends Record<string, string> {
-  homeworkTitle: string,
+  homeworkTitle: string;
   /** @note We don't use `content` field because it may be too long. */
-  homeworkSemester: string,
-  homeworkSubject: string,
-  homeworkChapter: string,
-  homeworkDueTime: string,
-  homeworkSubmissionMethod: string
+  homeworkSemester: string;
+  homeworkSubject: string;
+  homeworkChapter: string;
+  homeworkDueTime: string;
+  homeworkSubmissionMethod: string;
 }
