@@ -16,7 +16,8 @@ const config = defineConfig(async () => {
     server: {
       fs: {
         strict: false
-      }
+      },
+      port: 3000
     }
   };
 });
