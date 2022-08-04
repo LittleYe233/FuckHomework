@@ -9,6 +9,7 @@ import type {
   VarSubstitutions
 } from './types';
 import _cfg from '~/../config.json';
+import { parseRuleLoader } from './rules';
 
 /** @note Key is string-type of the version number. */
 export const DEFAULT_CONFIG: Record<string, ProjectConfig> = {
@@ -64,10 +65,15 @@ export function parseProjectConfig(): ProjectConfig {
   }
   const cfg: ProjectConfig = lodash.merge({}, DEFAULT_CONFIG[_ver], original_cfg);
   cfg.homework.entries = cfg.homework.entries.map((a) => {
+    // try to merge with default values
     const assignment = lodash.merge({}, DEFAULT_ASSIGNMENT_CONFIG[_ver], a);
+
+    // check title
     if (typeof assignment.title === 'undefined') {
       throw ReferenceError('assignment has no title');
     }
+
+    // check dueTime
     if (typeof assignment.dueTime === 'undefined') {
       assignment.dueTime = null;
     } else if (typeof assignment.dueTime === 'string') {
@@ -77,9 +83,19 @@ export function parseProjectConfig(): ProjectConfig {
         throw TypeError('invalid date');
       }
     }
-    // just declare its type
-    const _a: AssignmentConfig = assignment;
-    return _a;
+
+    // check rules
+    assignment.rules = assignment.rules.flatMap(rule => {
+      try {
+        // try to replace rule config with rule loader
+        return [parseRuleLoader(rule)];
+      } catch {
+        // delete the original element if failed
+        return [];
+      }
+    });
+
+    return assignment as AssignmentConfig;
   });
 
   return cfg;
