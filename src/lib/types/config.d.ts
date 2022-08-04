@@ -1,5 +1,5 @@
 import { DeepRequired } from 'utility-types';
-import type { AssignmentRules } from './rules';
+import type { RawAssignmentRules, AssignmentRuleLoaders } from './rules';
 
 /**
  * `server` section of project configuration.
@@ -25,6 +25,7 @@ export type ProjectServerConfig = DeepRequired<RawProjectServerConfig>;
  * @param chapter corresponding chapter
  * @param dueTime due time of homework (null: no due time)
  * @param submissionMethod method to submit homework
+ * @param rules homework rules for validation
  */
 export interface RawAssignmentConfig {
   title: string;
@@ -34,11 +35,12 @@ export interface RawAssignmentConfig {
   chapter?: string;
   dueTime?: string | null;
   submissionMethod?: string;
-  rules?: AssignmentRules;
+  rules?: RawAssignmentRules;
 }
 export interface AssignmentConfig extends DeepRequired<RawAssignmentConfig> {
   // JSON doesn't directly support `Date` object.
   dueTime: Date | null;
+  rules: AssignmentRuleLoaders;
 }
 
 export interface RawHomeworkConfig {
