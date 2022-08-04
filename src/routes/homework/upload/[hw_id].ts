@@ -5,10 +5,14 @@ import fs from 'fs';
 import type { FileUploadData } from '~/lib/types';
 
 export const post: RequestHandler = async ({ params, request }) => {
+  const _opt = {
+    config: cfg,
+    hw_id: parseInt(params.hw_id)
+  };
   const data = await request.blob();
   const dataText = await data.text();
-  const savePath = parseVars(cfg.homework.savePath, cfg, parseInt(params.hw_id));
-  const subFolderPath = parseVars(cfg.homework.subFolderFormat, cfg, parseInt(params.hw_id));
+  const savePath = parseVars(cfg.homework.savePath, _opt);
+  const subFolderPath = parseVars(cfg.homework.subFolderFormat, _opt);
   const subFolderFullPath = path.join(savePath, subFolderPath);
 
   /** @note make a directory to save files */
