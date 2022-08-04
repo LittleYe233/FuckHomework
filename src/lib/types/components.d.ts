@@ -12,3 +12,8 @@ export interface FileUploadData {
 }
 
 export { AssignmentRule } from './rules';
+
+export interface StudentInfo {
+  id: number;
+  name: string;
+}
