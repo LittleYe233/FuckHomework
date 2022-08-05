@@ -29,6 +29,7 @@ export interface RuleLoader extends Rule {
 
 export interface _AssignmentRuleLoader extends RuleLoader, _AssignmentRule {
   validate(src: FileUploadData, config: ProjectConfig, hw_id: number, student: StudentInfo): ValidationResult;
+  renderPatternForViewing(pattern: string): string;
 }
 
 export type AssignmentRuleLoader = FilenameCheckAssignmentRuleLoader;

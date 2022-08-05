@@ -1,4 +1,4 @@
-import { parseVars } from './config';
+import { parseVars, VAR_SUB_FIELD_READABLE_ITALIC } from './config';
 import type {
   AssignmentRuleLoader,
   FilenameCheckAssignmentRule,
@@ -27,6 +27,9 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
     this.blacklist = rule.blacklist || [];
   }
 
+  /**
+   * Validates if a `FileUploadData` is valid for this rule.
+   */
   validate(src: FileUploadData, config: ProjectConfig, hw_id: number, student: StudentInfo): ValidationResult {
     // check function
     const _check = (s: string) => {
@@ -72,6 +75,9 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
     }
   }
 
+  /**
+   * Returns a string representation of this rule without methods.
+   */
   toString(): string {
     return JSON.stringify({
       type: this.type,
@@ -79,6 +85,13 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
       whitelist: this.whitelist,
       blacklist: this.blacklist
     });
+  }
+
+  /**
+   * Renders an given pattern string to an HTML string for rule viewing (a.k.a. other Svelte components).
+   */
+  renderPatternForViewing(pattern: string): string {
+    return parseVars(pattern, { varsubs: VAR_SUB_FIELD_READABLE_ITALIC });
   }
 }
 
