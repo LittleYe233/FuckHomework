@@ -1,12 +1,19 @@
 <script lang="ts">
   import type { AssignmentRuleLoaders } from '~/lib/types';
+  import FilenameCheck from './rules/filename_check.svelte';
 
   export let rules: AssignmentRuleLoaders;
+
+  const comps = {
+    filename_check: FilenameCheck
+  };
 </script>
 
 <!-- conditions -->
 <ul class="mx-4 my-4 list-inside list-disc">
   {#each rules as rule}
-    <li><code class="break-all">{rule.toString()}</code></li>
+    <li class="break-all">
+      <svelte:component this={comps[rule.type]} {rule} />
+    </li>
   {/each}
 </ul>
