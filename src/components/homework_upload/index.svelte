@@ -1,7 +1,7 @@
 <script lang="ts">
   export let hw_id: string;
 
-  import ConditionView from './condition_view.svelte';
+  import ConditionView from '../condition_view/index.svelte';
   import base64ArrayBuffer from '~/lib/base64ArrayBuffer';
   import { cfg } from '~/lib/config';
   import type { FileUploadData } from '~/lib/types/components';
