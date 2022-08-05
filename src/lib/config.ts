@@ -39,6 +39,20 @@ export const DEFAULT_ASSIGNMENT_CONFIG: Record<string, Omit<AssignmentConfig, 't
   }
 };
 
+export const VAR_SUB_FIELD_READABLE: VarSubstitutions = {
+  homeworkTitle: 'title',
+  homeworkSemester: 'semester',
+  homeworkSubject: 'subject',
+  homeworkChapter: 'chapter',
+  homeworkDueTime: 'due time',
+  homeworkSubmissionMethod: 'submission method',
+  studentId: 'student ID',
+  studentName: 'student name'
+};
+export const VAR_SUB_FIELD_READABLE_ITALIC = Object.fromEntries(
+  Object.entries(VAR_SUB_FIELD_READABLE).map((v) => [v[0], `<span class="italic">${v[1]}</span>`])
+) as VarSubstitutions;
+
 /**
  * Parse `Date` instance to formatted datetime string.
  * @param dt a `Date` instance or null
@@ -85,7 +99,7 @@ export function parseProjectConfig(): ProjectConfig {
     }
 
     // check rules
-    assignment.rules = assignment.rules.flatMap(rule => {
+    assignment.rules = assignment.rules.flatMap((rule) => {
       try {
         // try to replace rule config with rule loader
         return [parseRuleLoader(rule)];
@@ -146,9 +160,13 @@ export function getVarSubstitutions(options: { config?: ProjectConfig; hw_id?: n
  * @param options.config project config
  * @param options.hw_id homework ID
  * @param options.student student info
+ * @param options.varsubs injected variable substitutions, replacing the new generated one by previous options
  */
-export function parseVars(str: string, options: { config?: ProjectConfig; hw_id?: number; student?: StudentInfo }): string {
-  const varsubs = getVarSubstitutions(options);
+export function parseVars(
+  str: string,
+  options: { config?: ProjectConfig; hw_id?: number; student?: StudentInfo; varsubs?: VarSubstitutions }
+): string {
+  const varsubs = options.varsubs || getVarSubstitutions(options);
   const re = new RegExp(
     Object.keys(varsubs)
       .map((v) => '\\${' + v + '}')
