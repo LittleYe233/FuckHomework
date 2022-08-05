@@ -1,7 +1,7 @@
 import { cfg } from '~/lib/config';
 import type { RequestHandler } from '~/../.svelte-kit/types/src/routes/homework/detail/__types/[hw_id]';
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
   const assignment = cfg.homework.entries[parseInt(params.hw_id)];
 
   return {

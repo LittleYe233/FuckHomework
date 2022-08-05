@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import type { FileUploadData } from '~/lib/types';
 
-export const post: RequestHandler = async ({ params, request }) => {
+export const POST: RequestHandler = async ({ params, request }) => {
   const _opt = {
     config: cfg,
     hw_id: parseInt(params.hw_id)
