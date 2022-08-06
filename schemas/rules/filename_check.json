@@ -27,7 +27,7 @@
       "type": "string",
       "description": "Validation priority between whitelist and blacklist. \"whitelist\" means whitelist is prior to blacklist; \"blacklist\" is similar. Default to \"whitelist\".",
       "enum": ["whitelist", "blacklist"],
-      "default": "whitelist"
+      "default": "blacklist"
     }
   },
   "required": ["type"]

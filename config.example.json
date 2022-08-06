@@ -20,9 +20,9 @@
         "rules": [
           {
             "type": "filename_check",
-            "priority": "whitelist",
+            "priority": "blacklist",
             "whitelist": [
-              "${studentName}-${studentNo}.txt"
+              "${homeworkTitle}-testname.txt"
             ],
             "blacklist": []
           }

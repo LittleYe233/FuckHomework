@@ -22,7 +22,7 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
     }
 
     this.type = 'filename_check';
-    this.priority = rule.priority || 'whitelist';
+    this.priority = rule.priority || 'blacklist';
     this.whitelist = rule.whitelist || [];
     this.blacklist = rule.blacklist || [];
   }
