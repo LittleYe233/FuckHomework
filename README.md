@@ -7,6 +7,7 @@ This is a SvelteKit web application to blame and manage received homework of you
 ## Features
 
 - Succinct Web UI
+- Custom validation rules
 
 ## Getting started
 
@@ -47,7 +48,7 @@ Also you can copy or rename `config.example.json` to `config.json` which include
 ## To-do list
 
 - User management and permission
-- Additional rules (i.e. filename restriction) for components (i.e. homework upload panel)
+- Validation rules on back-end
 - More optional visualization
 - Due time restriction
 - Classification for ongoing and finished homework
