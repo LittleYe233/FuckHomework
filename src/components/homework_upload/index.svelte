@@ -11,6 +11,12 @@
   let uploadedFiles: FileList | null | undefined;
 
   const submitHomework: svelte.JSX.EventHandler<SubmitEvent, HTMLFormElement> = async (e) => {
+    let result = '';
+
+    /**
+     * @note FRONTEND
+     */
+
     if (!uploadedFiles) {
       return;
     }
@@ -22,20 +28,47 @@
       let file = uploadedFiles.item(i);
       if (file === null) continue;
       try {
-        data.push({
+        const d = {
           type: file.type,
           size: file.size,
           name: file.name,
           // text: await file.text(),
           text64: base64ArrayBuffer(await file.arrayBuffer())
-        });
+        } as FileUploadData;
+
+        const [_r, _ret] = (() => {
+          for (const r of rules) {
+            const ret = r.validate(d, cfg, parseInt(hw_id), undefined);
+            if (ret.valid === false) {
+              return [r, ret];
+            }
+          }
+          return [];
+        })();
+        if (typeof _r !== 'undefined') {
+          // invalid file
+          result += `Error: File (${i + 1}/${uploadedFiles.length}) "${
+            file.name
+          }" fails front-end validation. First failed rule: ${_r}. Verdict: ${JSON.stringify(_ret)}\n`;
+        } else {
+          data.push(d);
+        }
       } catch (e) {}
+    }
+
+    if (!data.length) {
+      result += 'No files are uploaded.';
+      return result;
     }
 
     let blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
 
+    /**
+     * @note BACKEND
+     */
+
     // send request
-    return await fetch(`/homework/upload/${hw_id}`, {
+    result += await fetch(`/homework/upload/${hw_id}`, {
       method: 'POST',
       headers: [['Content-Type', 'application/octet-stream']],
       body: blob
@@ -55,6 +88,8 @@
       .catch((err) => {
         return 'Error: ' + JSON.stringify(err);
       });
+
+    return result;
   };
 
   // for Svelte await logic only
@@ -79,7 +114,7 @@
   </form>
   <div class="relative mt-2">
     <h4 class="mb-2 text-lg font-bold">Result</h4>
-    <code class="break-all">
+    <code class="break-all whitespace-pre-line">
       {#await promise}
         Awaiting result...
       {:then resp}

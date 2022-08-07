@@ -30,7 +30,7 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
   /**
    * Validates if a `FileUploadData` is valid for this rule.
    */
-  validate(src: FileUploadData, config: ProjectConfig, hw_id: number, student: StudentInfo): ValidationResult {
+  validate(src: FileUploadData, config?: ProjectConfig, hw_id?: number, student?: StudentInfo): ValidationResult {
     // check function
     const _check = (s: string) => {
       const parsed = parseVars(s, { config, hw_id, student });
