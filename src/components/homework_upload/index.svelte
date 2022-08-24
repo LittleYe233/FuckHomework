@@ -10,7 +10,7 @@
 
   let uploadedFiles: FileList | null | undefined;
 
-  const submitHomework: svelte.JSX.EventHandler<SubmitEvent, HTMLFormElement> = async (e) => {
+  const submitHomework = async () => {
     let result = '';
 
     /**
@@ -18,7 +18,7 @@
      */
 
     if (!uploadedFiles) {
-      return;
+      return 'Awaiting result...';
     }
 
     // read all files and convert to a `Blob` object
@@ -53,7 +53,7 @@
         } else {
           data.push(d);
         }
-      } catch (e) {}
+      } catch (e) {} // eslint-disable-line no-empty
     }
 
     if (!data.length) {
@@ -93,9 +93,9 @@
   };
 
   // for Svelte await logic only
-  let promise: Promise<any>;
-  const submitClickFunc: svelte.JSX.EventHandler<SubmitEvent, HTMLFormElement> = (e) => {
-    promise = submitHomework(e);
+  let promise: Promise<string>;
+  const submitClickFunc = () => {
+    promise = submitHomework();
   };
 </script>
 
