@@ -8,7 +8,7 @@ import type {
   StudentVarSubstitutions,
   VarSubstitutions
 } from './types';
-import _cfg from '~/../config.json';
+import _cfg from '~/../config.js';
 import { parseRuleLoader } from './rules';
 
 /** @note Key is string-type of the version number. */
