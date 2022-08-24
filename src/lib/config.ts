@@ -44,8 +44,6 @@ export const VAR_SUB_FIELD_READABLE: VarSubstitutions = {
   homeworkSemester: 'semester',
   homeworkSubject: 'subject',
   homeworkChapter: 'chapter',
-  homeworkDueTime: 'due time',
-  homeworkSubmissionMethod: 'submission method',
   studentId: 'student ID',
   studentName: 'student name'
 };

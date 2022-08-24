@@ -64,12 +64,9 @@ export interface ProjectConfig extends DeepRequired<RawProjectConfig> {
 export interface HomeworkVarSubstitutions extends Record<string, string> {
   // `hw_id` required
   homeworkTitle: string;
-  /** @note We don't use `content` field because it may be too long. */
   homeworkSemester: string;
   homeworkSubject: string;
   homeworkChapter: string;
-  homeworkDueTime: string;
-  homeworkSubmissionMethod: string;
 }
 
 export interface StudentVarSubstitutions extends Record<string, string> {
