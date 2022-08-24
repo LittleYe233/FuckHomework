@@ -8,5 +8,5 @@ node_modules
 !.env.example
 .vercel
 .output
-config.json
+config.js
 /data
