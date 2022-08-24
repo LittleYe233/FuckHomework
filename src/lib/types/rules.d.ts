@@ -1,4 +1,5 @@
 import { FilenameCheckAssignmentRuleLoader } from '../rules';
+import type { ParseVarsOptions } from './config';
 
 export interface Rule {
   type: string;
@@ -28,7 +29,7 @@ export interface RuleLoader extends Rule {
 }
 
 export interface _AssignmentRuleLoader extends RuleLoader, _AssignmentRule {
-  validate(src: FileUploadData, config: ProjectConfig, hw_id: number, student: StudentInfo): ValidationResult;
+  validate(src: FileUploadData, options: ParseVarsOptions): ValidationResult;
   renderPatternForViewing(pattern: string): string;
 }
 

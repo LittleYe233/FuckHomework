@@ -17,3 +17,8 @@ export interface StudentInfo {
   id: number;
   name: string;
 }
+
+export interface InfoSlot {
+  homework?: AssignmentConfig;
+  student?: StudentInfo
+}

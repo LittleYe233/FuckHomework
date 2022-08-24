@@ -38,7 +38,8 @@
 
         const [_r, _ret] = (() => {
           for (const r of rules) {
-            const ret = r.validate(d, cfg, parseInt(hw_id), undefined);
+            const homework = cfg.homework.entries[parseInt(hw_id)];
+            const ret = r.validate(d, { homework });
             if (ret.valid === false) {
               return [r, ret];
             }

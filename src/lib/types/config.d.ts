@@ -1,4 +1,5 @@
 import { DeepRequired } from 'utility-types';
+import type { InfoSlot } from './components';
 import type { RawAssignmentRules, AssignmentRuleLoaders } from './rules';
 
 /**
@@ -76,3 +77,7 @@ export interface StudentVarSubstitutions extends Record<string, string> {
 }
 
 export interface VarSubstitutions extends HomeworkVarSubstitutions, StudentVarSubstitutions, Record<string, string> {}
+
+export interface ParseVarsOptions extends InfoSlot {
+  varsubs?: VarSubstitutions;
+}

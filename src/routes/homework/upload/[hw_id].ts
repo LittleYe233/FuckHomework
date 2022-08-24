@@ -6,8 +6,7 @@ import type { FileUploadData } from '~/lib/types';
 
 export const POST: RequestHandler = async ({ params, request }) => {
   const _opt = {
-    config: cfg,
-    hw_id: parseInt(params.hw_id)
+    homework: cfg.homework.entries[parseInt(params.hw_id)]
   };
   const data = await request.blob();
   const dataText = await data.text();

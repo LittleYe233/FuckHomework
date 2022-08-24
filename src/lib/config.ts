@@ -2,6 +2,8 @@ import lodash from 'lodash';
 import type {
   AssignmentConfig,
   HomeworkVarSubstitutions,
+  InfoSlot,
+  ParseVarsOptions,
   ProjectConfig,
   RawProjectConfig,
   StudentInfo,
@@ -116,15 +118,12 @@ export function parseProjectConfig(): ProjectConfig {
 export const cfg = parseProjectConfig();
 
 // for compatibility
-function _getVarSubstitutions_h(config: ProjectConfig, hw_id: number): HomeworkVarSubstitutions {
-  const et = config.homework.entries[hw_id];
+function _getVarSubstitutions_h(homework: AssignmentConfig): HomeworkVarSubstitutions {
   return {
-    homeworkTitle: et.title,
-    homeworkSemester: et.semester,
-    homeworkSubject: et.subject,
-    homeworkChapter: et.chapter,
-    homeworkDueTime: parseDateTime(et.dueTime),
-    homeworkSubmissionMethod: et.submissionMethod
+    homeworkTitle: homework.title,
+    homeworkSemester: homework.semester,
+    homeworkSubject: homework.subject,
+    homeworkChapter: homework.chapter
   };
 }
 
@@ -135,11 +134,11 @@ function _getVarSubstitutions_s(student: StudentInfo): StudentVarSubstitutions {
   };
 }
 
-export function getVarSubstitutions(options: { config?: ProjectConfig; hw_id?: number; student?: StudentInfo }): Partial<VarSubstitutions> {
+export function getVarSubstitutions(options: InfoSlot): Partial<VarSubstitutions> {
   let result = {};
 
-  if (typeof options.config !== 'undefined' && typeof options.hw_id !== 'undefined') {
-    result = { ...result, ..._getVarSubstitutions_h(options.config, options.hw_id) };
+  if (typeof options.homework !== 'undefined') {
+    result = { ...result, ..._getVarSubstitutions_h(options.homework) };
   }
   if (typeof options.student !== 'undefined') {
     result = { ...result, ..._getVarSubstitutions_s(options.student) };
@@ -152,18 +151,14 @@ export function getVarSubstitutions(options: { config?: ProjectConfig; hw_id?: n
  * Parse variables in the given string.
  *
  * @example
- * parseVars("${homeworkTitle}/foo/bar", { config, hw_id: 1 }) === "Title_of_Homework_with_ID_1/foo/bar"
+ * parseVars("${homeworkTitle}/foo/bar", { config.homework.entries[1] }) === "Title_of_Homework_with_ID_1/foo/bar"
  *
  * @param str the string to be variable-parsed
- * @param options.config project config
- * @param options.hw_id homework ID
+ * @param options.homework homework config
  * @param options.student student info
  * @param options.varsubs injected variable substitutions, replacing the new generated one by previous options
  */
-export function parseVars(
-  str: string,
-  options: { config?: ProjectConfig; hw_id?: number; student?: StudentInfo; varsubs?: VarSubstitutions }
-): string {
+export function parseVars(str: string, options: ParseVarsOptions): string {
   const varsubs = options.varsubs || getVarSubstitutions(options);
   const re = new RegExp(
     Object.keys(varsubs)
