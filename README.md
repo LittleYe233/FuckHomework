@@ -33,17 +33,15 @@ npm run dev
 
 ## Configuration
 
-All configurations are stored in `config.json`, which is ignored by Git. So after cloning the repository, make sure to create it in the root folder. The only required field is `version` which should be `1` now:
+All configurations are stored in `config.js`, which is ignored by Git. So after cloning the repository, make sure to create it in the root folder. The only required field is `version` which should be `1` now:
 
-```json
-{
-    "version": 1
-}
+```js
+export default {
+    version: 1
+};
 ```
 
-Also you can copy or rename `config.example.json` to `config.json` which includes most of the supported fields and most of their values are default ones.
-
-`config.json` and `config.example.json` support JSON Schema to lint them. Use Visual Studio Code and hover the cursor onto these fields to check details.
+Also you can copy or rename `config.example.js` to `config.js` which includes most of the supported fields and most of their values are default ones.
 
 ## To-do list
 
