@@ -52,6 +52,12 @@ export const VAR_SUB_FIELD_READABLE: VarSubstitutions = {
 export const VAR_SUB_FIELD_READABLE_ITALIC = Object.fromEntries(
   Object.entries(VAR_SUB_FIELD_READABLE).map((v) => [v[0], `<span class="italic">${v[1]}</span>`])
 ) as VarSubstitutions;
+export const STUDENT_VAR_SUB_FIELD_READABLE_ITALIC = Object.fromEntries(
+  Object.entries(VAR_SUB_FIELD_READABLE_ITALIC).filter((v) => v[0].startsWith('student'))
+) as Partial<VarSubstitutions>;
+export const HOMEWORK_VAR_SUB_FIELD_READABLE_ITALIC = Object.fromEntries(
+  Object.entries(VAR_SUB_FIELD_READABLE_ITALIC).filter((v) => v[0].startsWith('homework'))
+) as Partial<VarSubstitutions>;
 
 /**
  * Parse `Date` instance to formatted datetime string.
