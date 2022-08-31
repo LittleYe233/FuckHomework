@@ -1,4 +1,4 @@
-import { parseVars, VAR_SUB_FIELD_READABLE_ITALIC } from './config';
+import { parseVars, STUDENT_VAR_SUB_FIELD_READABLE_ITALIC, VAR_SUB_FIELD_READABLE_ITALIC } from './config';
 import type {
   AssignmentRuleLoader,
   FilenameCheckAssignmentRule,
@@ -6,6 +6,7 @@ import type {
   ParseVarsOptions,
   RawAssignmentRule,
   ValidationResult,
+  VarSubstitutions,
   _AssignmentRuleLoader
 } from './types';
 
@@ -88,9 +89,20 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
 
   /**
    * Renders an given pattern string to an HTML string for rule viewing (a.k.a. other Svelte components).
+   * 
+   * Note that we don't accept `student` property for `options`.
    */
-  renderPatternForViewing(pattern: string): string {
-    return parseVars(pattern, { varsubs: VAR_SUB_FIELD_READABLE_ITALIC });
+  renderPatternForViewing(pattern: string): string;
+  renderPatternForViewing(pattern: string, options: Omit<ParseVarsOptions, 'student'>): string;
+  renderPatternForViewing(pattern: string, options?: Omit<ParseVarsOptions, 'student'>): string {
+    if (options === undefined) {
+      return parseVars(pattern, { varsubs: VAR_SUB_FIELD_READABLE_ITALIC });
+    } else {
+      return parseVars(pattern, {
+        ...options,
+        varsubs: { ...options.varsubs, ...STUDENT_VAR_SUB_FIELD_READABLE_ITALIC } as VarSubstitutions
+      });
+    }
   }
 }
 

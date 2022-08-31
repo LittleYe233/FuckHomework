@@ -31,6 +31,7 @@ export interface RuleLoader extends Rule {
 export interface _AssignmentRuleLoader extends RuleLoader, _AssignmentRule {
   validate(src: FileUploadData, options: ParseVarsOptions): ValidationResult;
   renderPatternForViewing(pattern: string): string;
+  renderPatternForViewing(pattern: string, options?: Omit<ParseVarsOptions, 'student'>): string;
 }
 
 export type AssignmentRuleLoader = FilenameCheckAssignmentRuleLoader;
