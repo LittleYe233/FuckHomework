@@ -13,8 +13,8 @@ import type {
 export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader, FilenameCheckAssignmentRule {
   type: 'filename_check';
   priority: 'whitelist' | 'blacklist';
-  whitelist: string[];
-  blacklist: string[];
+  whitelist: (string | RegExp)[];
+  blacklist: (string | RegExp)[];
 
   constructor(rule: FilenameCheckAssignmentRule) {
     if (rule.type !== 'filename_check') {
@@ -32,10 +32,14 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
    */
   validate(src: FileUploadData, options: ParseVarsOptions): ValidationResult {
     // check function
-    const _check = (s: string) => {
-      const parsed = parseVars(s, options);
-      if (parsed === src.name) {
-        return true;
+    const _check = (s: string | RegExp) => {
+      if (typeof s === 'string') {
+        const parsed = parseVars(s, options);
+        return parsed === src.name;
+      } else if (s instanceof RegExp) {
+        return s.test(src.name);
+      } else {
+        throw TypeError('invalid argument type');
       }
     };
 
@@ -94,17 +98,24 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
    * 
    * Note that we don't accept `student` property for `options`.
    */
-  renderPatternForViewing(pattern: string): string;
-  renderPatternForViewing(pattern: string, options: Omit<ParseVarsOptions, 'student'>): string;
-  renderPatternForViewing(pattern: string, options?: Omit<ParseVarsOptions, 'student'>): string {
-    if (options === undefined) {
-      return parseVars(pattern, { varsubs: VAR_SUB_FIELD_READABLE_ITALIC });
+  renderPatternForViewing(pattern: string | RegExp): string;
+  renderPatternForViewing(pattern: string | RegExp, options: Omit<ParseVarsOptions, 'student'>): string;
+  renderPatternForViewing(pattern: string | RegExp, options?: Omit<ParseVarsOptions, 'student'>): string {
+    if (typeof pattern === 'string') {
+      if (options === undefined) {
+        return parseVars(pattern, { varsubs: VAR_SUB_FIELD_READABLE_ITALIC });
+      } else {
+        return parseVars(pattern, {
+          ...options,
+          varsubs: { ...options.varsubs, ...STUDENT_VAR_SUB_FIELD_READABLE_ITALIC } as VarSubstitutions
+        });
+      }
+    } else if (pattern instanceof RegExp) {
+      return `RegExp: <code>${pattern.toString().slice(1, -1)}</code>`;
     } else {
-      return parseVars(pattern, {
-        ...options,
-        varsubs: { ...options.varsubs, ...STUDENT_VAR_SUB_FIELD_READABLE_ITALIC } as VarSubstitutions
-      });
+      throw TypeError('invalid pattern type');
     }
+    
   }
 }
 

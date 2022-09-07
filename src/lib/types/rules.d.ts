@@ -7,8 +7,8 @@ export interface Rule {
 
 export interface _AssignmentRule extends Rule {
   priority: 'whitelist' | 'blacklist';
-  whitelist: string[];
-  blacklist: string[];
+  whitelist: (string | RegExp)[];
+  blacklist: (string | RegExp)[];
 }
 
 export interface FilenameCheckAssignmentRule extends _AssignmentRule {
