@@ -59,7 +59,8 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
          * - `r`, when found an entry in whitelist (passed);
          * - `false`, when not found or whitelist is empty (failed).
          */
-        entries: ['whitelist', r || false]
+        entries: ['whitelist', r || false],
+        message: 'Filename does not meet any of valid patterns'
       };
     } else {
       const r = _check_b();
@@ -70,7 +71,8 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
          * - `r`, when found an entry in blacklist (failed);
          * - `true`, when not found or blacklist is empty (passed).
          */
-        entries: ['blacklist', r || true]
+        entries: ['blacklist', r || true],
+        message: 'Filename meets certain invalid pattern'
       };
     }
   }
