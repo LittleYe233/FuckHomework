@@ -11,14 +11,33 @@
   let uploadedFiles: FileList | null | undefined;
 
   const submitHomework = async () => {
-    let result = '';
+    let result = '',
+      resultFriendly: {
+        status: string;
+        message: string;
+        files: {
+          filename: string;
+          verdict: string;
+        }[];
+      } = {
+        status: '',
+        message: '',
+        files: []
+      };
 
     /**
      * @note FRONTEND
      */
 
     if (!uploadedFiles) {
-      return 'Awaiting result...';
+      return {
+        nerd: 'Error: No input files.',
+        result: {
+          status: 'Failed',
+          message: 'No input files',
+          files: []
+        }
+      };
     }
 
     // read all files and convert to a `Blob` object
@@ -48,8 +67,15 @@
         })();
         if (typeof _r !== 'undefined') {
           // invalid file
+          resultFriendly.status = 'Failed';
+          resultFriendly.message = 'Failed to upload some files';
+          const failedFile = {
+            filename: file.name,
+            verdict: _ret?.message ?? JSON.stringify(_ret)
+          };
+          resultFriendly.files.push(failedFile as never);
           result += `Error: File (${i + 1}/${uploadedFiles.length}) "${
-            file.name
+            failedFile.filename
           }" fails front-end validation. First failed rule: ${_r}. Verdict: ${JSON.stringify(_ret)}\n`;
         } else {
           data.push(d);
@@ -59,7 +85,11 @@
 
     if (!data.length) {
       result += 'No files are uploaded.';
-      return result;
+      resultFriendly.message = 'Failed to upload all files';
+      return {
+        nerd: result,
+        result: resultFriendly
+      };
     }
 
     let blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
@@ -76,6 +106,17 @@
     })
       .then((resp) =>
         (async () => {
+          if (resp.status === 200) {
+            resultFriendly.status = 'Passed';
+            if (resultFriendly.files.length) {
+              resultFriendly.message = 'Failed to upload some files';
+            } else {
+              resultFriendly.message = 'Succeeded to upload all files';
+            }
+          } else {
+            resultFriendly.status = 'Failed';
+            resultFriendly.message += ' ' + (await resp.json()).message;
+          }
           return (
             'Response: ' +
             JSON.stringify({
@@ -87,14 +128,29 @@
         })()
       )
       .catch((err) => {
+        resultFriendly.status = 'Failed';
+        resultFriendly.message += ' ' + JSON.stringify(err);
         return 'Error: ' + JSON.stringify(err);
       });
 
-    return result;
+    return {
+      nerd: result,
+      result: resultFriendly
+    };
   };
 
   // for Svelte await logic only
-  let promise: Promise<string>;
+  let promise: Promise<{
+    result: {
+      status: string;
+      message: string;
+      files: {
+        filename: string;
+        verdict: string;
+      }[];
+    };
+    nerd: string;
+  }>;
   const submitClickFunc = () => {
     promise = submitHomework();
   };
@@ -115,12 +171,49 @@
   </form>
   <div class="relative mt-2">
     <h4 class="mb-2 text-lg font-bold">Result</h4>
-    <code class="break-all whitespace-pre-line">
-      {#await promise}
-        Awaiting result...
-      {:then resp}
-        {resp}
-      {/await}
-    </code>
+    {#await promise}
+      <div class="relative mt-2 p-2">Awaiting result...</div>
+    {:then resp}
+      <!-- avoid `resp` being undefined -->
+      {#if resp}
+        <div class="relative mt-2 grid grid-cols-[repeat(2,_minmax(0,_max-content))] p-2">
+          <span class="font-bold border-2 p-1.5">Status</span>
+          {#if resp.result.status === 'Passed'}
+            <span class="border-2 p-1.5 text-[#5BCEFA]">Passed</span>
+          {:else if resp.result.status === 'Failed'}
+            <span class="border-2 p-1.5 text-[#F5AAB9]">Failed</span>
+          {/if}
+          <span class="font-bold border-2 p-1.5">Message</span><span class="border-2 p-1.5">{resp.result.message}</span>
+          {#if resp.result.files.length}
+            <span class="font-bold border-2 p-1.5">Filename</span><span class="font-bold border-2 p-1.5">Verdict</span>
+            {#each resp.result.files as f}
+              <span class="break-all border-2 p-1.5">
+                <code>{f.filename}</code>
+              </span><span class="border-2 p-1.5">{f.verdict}</span>
+            {/each}
+          {/if}
+        </div>
+      {:else}
+        <div class="relative mt-2">Awaiting result...</div>
+      {/if}
+    {/await}
+  </div>
+  <div class="relative mt-2">
+    <h4 class="mb-2 text-lg font-bold">Output for Nerds</h4>
+    <details>
+      <summary>Click to show/hide</summary>
+
+      <code class="break-all whitespace-pre-line">
+        {#await promise}
+          Awaiting result...
+        {:then resp}
+          {#if resp}
+            {resp.nerd}
+          {:else}
+            Awaiting result...
+          {/if}
+        {/await}
+      </code>
+    </details>
   </div>
 </div>
