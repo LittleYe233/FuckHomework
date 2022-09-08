@@ -122,6 +122,7 @@ export function parseProjectConfig(): ProjectConfig {
 }
 
 export const cfg = parseProjectConfig();
+console.dir(cfg, { depth: null });
 
 // for compatibility
 function _getVarSubstitutions_h(homework: AssignmentConfig): HomeworkVarSubstitutions {
