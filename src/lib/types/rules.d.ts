@@ -7,8 +7,8 @@ export interface Rule {
 
 export interface _AssignmentRule extends Rule {
   priority: 'whitelist' | 'blacklist';
-  whitelist: (string | RegExp)[];
-  blacklist: (string | RegExp)[];
+  whitelist: WhiteOrBlacklistItem[];
+  blacklist: WhiteOrBlacklistItem[];
 }
 
 export interface FilenameCheckAssignmentRule extends _AssignmentRule {
@@ -49,3 +49,10 @@ export interface ValidationResult {
   message?: string;
   entries?: unknown[];
 }
+
+export type WhiteOrBlacklistObject = string | RegExp;
+export interface WhiteOrBlacklistCompound {
+  object: WhiteOrBlacklistObject;
+  displayHTML?: string;
+}
+export type WhiteOrBlacklistItem = WhiteOrBlacklistObject | WhiteOrBlacklistCompound;

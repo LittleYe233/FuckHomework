@@ -7,14 +7,19 @@ import type {
   RawAssignmentRule,
   ValidationResult,
   VarSubstitutions,
-  _AssignmentRuleLoader
+  _AssignmentRuleLoader,
+  WhiteOrBlacklistItem
 } from './types';
+
+export const DEFAULT_WHITE_OR_BLACKLIST_COMPOUND = {
+  displayHTML: ''
+};
 
 export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader, FilenameCheckAssignmentRule {
   type: 'filename_check';
   priority: 'whitelist' | 'blacklist';
-  whitelist: (string | RegExp)[];
-  blacklist: (string | RegExp)[];
+  whitelist: WhiteOrBlacklistItem[];
+  blacklist: WhiteOrBlacklistItem[];
 
   constructor(rule: FilenameCheckAssignmentRule) {
     if (rule.type !== 'filename_check') {
@@ -23,7 +28,14 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
 
     this.type = 'filename_check';
     this.priority = rule.priority || 'blacklist';
-    this.whitelist = rule.whitelist || [];
+    this.whitelist = (rule.whitelist || []).map(v => {
+      if (typeof v === 'object' && !(v instanceof RegExp)) {
+        // merge default values
+        return { ...DEFAULT_WHITE_OR_BLACKLIST_COMPOUND, ...v };
+      } else {
+        return v;
+      }
+    });
     this.blacklist = rule.blacklist || [];
   }
 
@@ -32,14 +44,15 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
    */
   validate(src: FileUploadData, options: ParseVarsOptions): ValidationResult {
     // check function
-    const _check = (s: string | RegExp) => {
+    const _check = (s: WhiteOrBlacklistItem): boolean => {
       if (typeof s === 'string') {
         const parsed = parseVars(s, options);
         return parsed === src.name;
       } else if (s instanceof RegExp) {
         return s.test(src.name);
       } else {
-        throw TypeError('invalid argument type');
+        // `.displayHTML` doesn't affect validation.
+        return _check(s.object);
       }
     };
 
@@ -95,12 +108,12 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
 
   /**
    * Renders an given pattern string to an HTML string for rule viewing (a.k.a. other Svelte components).
-   * 
+   *
    * Note that we don't accept `student` property for `options`.
    */
-  renderPatternForViewing(pattern: string | RegExp): string;
-  renderPatternForViewing(pattern: string | RegExp, options: Omit<ParseVarsOptions, 'student'>): string;
-  renderPatternForViewing(pattern: string | RegExp, options?: Omit<ParseVarsOptions, 'student'>): string {
+  renderPatternForViewing(pattern: WhiteOrBlacklistItem): string;
+  renderPatternForViewing(pattern: WhiteOrBlacklistItem, options: Omit<ParseVarsOptions, 'student'>): string;
+  renderPatternForViewing(pattern: WhiteOrBlacklistItem, options?: Omit<ParseVarsOptions, 'student'>): string {
     if (typeof pattern === 'string') {
       if (options === undefined) {
         return parseVars(pattern, { varsubs: VAR_SUB_FIELD_READABLE_ITALIC });
@@ -112,10 +125,14 @@ export class FilenameCheckAssignmentRuleLoader implements _AssignmentRuleLoader,
       }
     } else if (pattern instanceof RegExp) {
       return `RegExp: <code>${pattern.toString().slice(1, -1)}</code>`;
+    } else if (typeof pattern.object !== 'undefined') {
+      return (
+        pattern?.displayHTML ??
+        (options === undefined ? this.renderPatternForViewing(pattern.object) : this.renderPatternForViewing(pattern.object, options))
+      );
     } else {
       throw TypeError('invalid pattern type');
     }
-    
   }
 }
 
