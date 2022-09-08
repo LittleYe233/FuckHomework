@@ -48,6 +48,8 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
     "cookie": "^0.4.1",
+    "i18next": "^21.9.1",
+    "svelte-i18next": "^1.2.2",
     "utility-types": "^3.10.0"
   }
 }
