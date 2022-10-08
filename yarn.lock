@@ -206,6 +206,13 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
   integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
 
+"@types/i18next-fs-backend@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@types/i18next-fs-backend/-/i18next-fs-backend-1.1.2.tgz#4f3116769229371fcdf64bbdb6841ea745e392f9"
+  integrity sha512-ZzTRXA5B0x0oGhzKNp08IsYjZpli4LjRZpg3q4j0XFxN5lKG2MVLnR4yHX8PPExBk4sj9Yfk1z9O6CjPrAlmIQ==
+  dependencies:
+    i18next "^21.0.1"
+
 "@types/jquery@^3.5.14":
   version "3.5.14"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.14.tgz#ac8e11ee591e94d4d58da602cb3a5a8320dee577"
@@ -1159,7 +1166,12 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-i18next@^21.9.1:
+i18next-fs-backend@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/i18next-fs-backend/-/i18next-fs-backend-1.1.5.tgz#dcbd8227b1c1e4323b3c40e269d4762e8313d9e5"
+  integrity sha512-raTel3EfshiUXxR0gvmIoqp75jhkj8+7R1LjB006VZKPTFBbXyx6TlUVhb8Z9+7ahgpFbcQg1QWVOdf/iNzI5A==
+
+i18next@^21.0.1, i18next@^21.9.1:
   version "21.10.0"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.10.0.tgz#85429af55fdca4858345d0e16b584ec29520197d"
   integrity sha512-YeuIBmFsGjUfO3qBmMOc0rQaun4mIpGKET5WDwvu8lU7gvwpcariZLNtL0Fzj+zazcHUrlXHiptcFhBMFaxzfg==
