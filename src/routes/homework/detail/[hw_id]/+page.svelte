@@ -1,8 +1,12 @@
 <script lang="ts">
   import HomeworkSlot from '~/components/homework_slot.svelte';
   import HomeworkUpload from '~/components/homework_upload/index.svelte';
-  export let hw_id: string;
-  export let metadata: import('~/lib/types/index').HomeworkMetadata;
+  import type { HomeworkMetadata } from '~/lib/types/components';
+  import type { PageData } from './$types';
+
+  export let data: PageData;
+  export let hw_id: string = data.hw_id;
+  export let metadata: HomeworkMetadata = data.metadata;
 </script>
 
 <div class="relative flex min-h-screen flex-col overflow-hidden bg-gray-100 px-8 py-6 font-serif sm:py-6">
