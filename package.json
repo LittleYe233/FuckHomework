@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^1.0.0-next.63",
-    "@sveltejs/kit": "^1.0.0-next.392",
+    "@sveltejs/kit": "^1.0.0-next.511",
     "@types/cookie": "^0.5.1",
     "@types/jquery": "^3.5.14",
     "@types/lodash": "^4.14.182",
@@ -41,7 +41,7 @@
     "tailwindcss": "^3.1.5",
     "tslib": "^2.3.1",
     "typescript": "^4.7.4",
-    "vite": "^3.0.0",
+    "vite": "^3.1.0",
     "yaml": "^2.1.1"
   },
   "type": "module",
