@@ -1,8 +1,9 @@
-import type { RequestHandler } from '~/../.svelte-kit/types/src/routes/homework/upload/__types/[hw_id]';
-import { cfg, parseVars } from '~/lib/config';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+import { error, json } from '@sveltejs/kit';
+import { cfg, parseVars } from '~/lib/config';
 import type { FileUploadData } from '~/lib/types';
+import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ params, request }) => {
   const _opt = {
@@ -32,23 +33,13 @@ export const POST: RequestHandler = async ({ params, request }) => {
        * @see https://stackoverflow.com/a/69197391
        */
       const _e1 = e1 as Error;
-      return {
-        status: 500,
-        body: {
-          message: _e1.message
-        }
-      };
+      throw error(500, _e1.message);
     }
   }
   if (flagExists) {
     // exists, check if it is a directory
     if (!stat?.isDirectory()) {
-      return {
-        status: 500,
-        body: {
-          message: `homework subfolder path exists but is not a directory: ${subFolderFullPath}`
-        }
-      };
+      throw error(500, `homework subfolder path exists but is not a directory: ${subFolderFullPath}`);
     }
   }
 
@@ -59,11 +50,8 @@ export const POST: RequestHandler = async ({ params, request }) => {
     fs.writeFileSync(fileFullPath, d.text64, { encoding: 'base64' });
   }
 
-  return {
-    status: 200,
-    body: {
-      data: dataText,
-      hw_id: params.hw_id
-    }
-  };
+  return json({
+    data: dataText,
+    hw_id: params.hw_id
+  });
 };
