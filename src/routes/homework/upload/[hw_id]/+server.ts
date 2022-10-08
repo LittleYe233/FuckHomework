@@ -32,8 +32,7 @@ export const POST: RequestHandler = async ({ params, request }) => {
        * @note specify a type
        * @see https://stackoverflow.com/a/69197391
        */
-      const _e1 = e1 as Error;
-      throw error(500, _e1.message);
+      throw error(500, (e1 as Error).message);
     }
   }
   if (flagExists) {
