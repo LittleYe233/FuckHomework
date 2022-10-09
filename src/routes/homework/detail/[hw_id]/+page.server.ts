@@ -1,4 +1,5 @@
 import { cfg } from '~/lib/config';
+import type { HomeworkMetadata } from '~/lib/types';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ params }) => {
@@ -7,6 +8,6 @@ export const load: PageServerLoad = ({ params }) => {
   return {
     hw_id: params.hw_id,
     // force to be a JSON object
-    metadata: JSON.parse(JSON.stringify(assignment))
+    metadata: JSON.parse(JSON.stringify(assignment)) as HomeworkMetadata
   };
 };
