@@ -1,0 +1,67 @@
+{
+  "heading": {
+    "homework": {
+      "submission": "Homework Submission",
+      "list": "Homework list"
+    },
+    "control_pad": "Control Pad"
+  },
+  "message": {
+    "homework": {
+      "subfolder_is_file": "homework subfolder path exists but is not a directory: {{- subFolderFullPath}}",
+      "upload": {
+        "status": {
+          "failed": "Failed",
+          "passed": "Passed"
+        },
+        "no_input": "No input files",
+        "no_input_nerd": "Error: No input files.",
+        "no_uploaded_nerd": "No files are uploaded.",
+        "failed_some": "Failed to upload some files",
+        "failed_all": "Failed to upload all files"
+      }
+    }
+  },
+  "control": {
+    "homepage": "Back to homepage"
+  },
+  "error": {
+    "invalid_version": "invalid version number: {{version}}",
+    "homework_no_title": "assignment has no title",
+    "invalid_date": "invalid date"
+  },
+  "variable": {
+    "homework": {
+      "default": {
+        "submission_method": "Uploading files"
+      },
+      "substitution": {
+        "homework": {
+          "title": "title",
+          "semester": "semester",
+          "subject": "subject",
+          "chapter": "chapter"
+        },
+        "student": {
+          "id": "student id",
+          "name": "student name"
+        }
+      }
+    }
+  },
+  "rule": {
+    "error": {
+      "invalid_type": "invalid type name of rule: {{type}}",
+      "invalid_pattern_type": "invalid pattern type"
+    },
+    "filename_check": {
+      "message": {
+        "filename_no_valid": "Filename does not meet any of valid patterns",
+        "filename_invalid": "Filename meets certain invalid pattern"
+      },
+      "output": {
+        "regexp_pattern": "RegExp: <code>{{- pattern}}</code>"
+      }
+    }
+  }
+}

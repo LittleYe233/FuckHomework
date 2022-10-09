@@ -1,0 +1,67 @@
+{
+  "heading": {
+    "homework": {
+      "submission": "作业上传",
+      "list": "作业列表"
+    },
+    "control_pad": "控制面板"
+  },
+  "message": {
+    "homework": {
+      "subfolder_is_file": "作业文件夹指定路径不是文件夹：{{- subFolderFullPath}}",
+      "upload": {
+        "status": {
+          "failed": "失败",
+          "passed": "成功"
+        },
+        "no_input": "没有输入文件",
+        "no_input_nerd": "错误：没有输入文件。",
+        "no_uploaded_nerd": "没有文件被上传。",
+        "failed_some": "部分文件上传失败",
+        "failed_all": "所有文件上传失败"
+      }
+    }
+  },
+  "control": {
+    "homepage": "返回主页"
+  },
+  "error": {
+    "invalid_version": "无效的版本号：{{version}}",
+    "homework_no_title": "作业无标题",
+    "invalid_date": "无效的日期"
+  },
+  "variable": {
+    "homework": {
+      "default": {
+        "submission_method": "上传文件"
+      },
+      "substitution": {
+        "homework": {
+          "title": "标题",
+          "semester": "学期",
+          "subject": "课程",
+          "chapter": "章节"
+        },
+        "student": {
+          "id": "学号",
+          "name": "学生姓名"
+        }
+      }
+    }
+  },
+  "rule": {
+    "error": {
+      "invalid_type": "无效的规则类型：{{type}}",
+      "invalid_pattern_type": "无效的模式类型"
+    },
+    "filename_check": {
+      "message": {
+        "filename_no_valid": "文件名未命中任何白名单规则",
+        "filename_invalid": "文件名命中某黑名单规则"
+      },
+      "output": {
+        "regexp_pattern": "正则表达式：<code>{{- pattern}}</code>"
+      }
+    }
+  }
+}
