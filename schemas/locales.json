@@ -1,0 +1,184 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "locales",
+  "type": "object",
+  "description": "Schema for locales. They are for i18next package.",
+  "properties": {
+    "heading": {
+      "type": "object",
+      "properties": {
+        "homework": {
+          "type": "object",
+          "properties": {
+            "submission": {
+              "type": "string"
+            },
+            "list": {
+              "type": "string"
+            }
+          }
+        },
+        "control_pad": {
+          "type": "string"
+        }
+      }
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "homework": {
+          "type": "object",
+          "properties": {
+            "subfolder_is_file": {
+              "type": "string"
+            },
+            "upload": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "object",
+                  "properties": {
+                    "failed": {
+                      "type": "string"
+                    },
+                    "passed": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "no_input": {
+                  "type": "string"
+                },
+                "no_input_nerd": {
+                  "type": "string"
+                },
+                "no_uploaded_nerd": {
+                  "type": "string"
+                },
+                "failed_some": {
+                  "type": "string"
+                },
+                "failed_all": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "control": {
+      "type": "object",
+      "properties": {
+        "homepage": {
+          "type": "string"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "invalid_version": {
+          "type": "string"
+        },
+        "homework_no_title": {
+          "type": "string"
+        },
+        "invalid_date": {
+          "type": "string"
+        }
+      }
+    },
+    "variable": {
+      "type": "object",
+      "properties": {
+        "homework": {
+          "type": "object",
+          "properties": {
+            "default": {
+              "type": "object",
+              "properties": {
+                "submission_method": {
+                  "type": "string"
+                }
+              }
+            },
+            "substitution": {
+              "type": "object",
+              "properties": {
+                "homework": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "semester": {
+                      "type": "string"
+                    },
+                    "subject": {
+                      "type": "string"
+                    },
+                    "chapter": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "student": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "invalid_type": {
+              "type": "string"
+            },
+            "invalid_pattern_type": {
+              "type": "string"
+            }
+          }
+        },
+        "filename_check": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "object",
+              "properties": {
+                "filename_invalid": {
+                  "type": "string"
+                },
+                "filename_no_valid": {
+                  "type": "string"
+                }
+              }
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "regexp_pattern": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
