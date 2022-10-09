@@ -1,15 +1,14 @@
 import i18next from 'i18next';
-// import { createI18nStore } from 'svelte-i18next';
-import enUSTranslation from '../../locales/en-US.json';
-import zhCNTranslation from '../../locales/zh-CN.json';
+import enUSTranslation from '../../locales/en.json';
+import zhCNTranslation from '../../locales/zh.json';
 
 i18next.init({
-  fallbackLng: 'en-US',
+  fallbackLng: 'en',
   resources: {
-    'en-US': {
+    'en': {
       translation: enUSTranslation
     },
-    'zh-CN': {
+    'zh': {
       translation: zhCNTranslation
     }
   },
@@ -19,6 +18,5 @@ i18next.init({
   debug: true
 });
 
-// export const i18n = createI18nStore(i18next);
 export const i18n = i18next;
 export default i18next.t;
