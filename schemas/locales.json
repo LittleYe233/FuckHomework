@@ -20,6 +20,45 @@
         },
         "control_pad": {
           "type": "string"
+        },
+        "components": {
+          "type": "object",
+          "properties": {
+            "homework_slot": {
+              "type": "object",
+              "properties": {
+                "semester": {
+                  "type": "string"
+                },
+                "subject": {
+                  "type": "string"
+                },
+                "chapter": {
+                  "type": "string"
+                },
+                "due_time": {
+                  "type": "string"
+                },
+                "submission_method": {
+                  "type": "string"
+                }
+              }
+            },
+            "homework_upload": {
+              "type": "object",
+              "properties": {
+                "upload_homework": {
+                  "type": "string"
+                },
+                "result": {
+                  "type": "string"
+                },
+                "output_nerd": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       }
     },

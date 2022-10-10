@@ -4,7 +4,21 @@
       "submission": "Homework Submission",
       "list": "Homework list"
     },
-    "control_pad": "Control Pad"
+    "control_pad": "Control Pad",
+    "components": {
+      "homework_slot": {
+        "semester": "Semester",
+        "subject": "Subject",
+        "chapter": "Chapter",
+        "due_time": "Due time",
+        "submission_method": "Submission method"
+      },
+      "homework_upload": {
+        "upload_homework": "Upload homework",
+        "result": "Result",
+        "output_nerd": "Output for Nerds"
+      }
+    }
   },
   "message": {
     "homework": {
