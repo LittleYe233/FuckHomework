@@ -2,7 +2,7 @@
   import type { PageData } from './$types';
 
   export let data: PageData;
-  const { __ } = data;
+  const { __, lang } = data;
 
   import HomeworkSlot from '~/components/homework_slot.svelte';
   import { cfg } from '~/lib/config';
@@ -17,7 +17,7 @@
     <!-- Homework list container -->
     <div>
       {#each homeworkSlots as slot, index}
-        <HomeworkSlot metadata={slot} linkable={true} hw_id={index.toString()} />
+        <HomeworkSlot metadata={slot} linkable={true} hw_id={index.toString()} {lang} {__} />
       {/each}
     </div>
   </div>
