@@ -12,8 +12,8 @@
     "baseUrl": "./src",
     "paths": {
       "~/*": ["./*"],
-      "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"]
+      "$lib": ["./lib"],
+      "$lib/*": ["./lib/*"]
     },
     "outDir": "./dist"
   },

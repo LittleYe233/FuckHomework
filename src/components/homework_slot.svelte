@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { parseDateTime } from '~/lib/config';
+  import { parseDateTime } from '$lib/config';
 
-  export let metadata: import('~/lib/types/index').HomeworkMetadata;
+  export let metadata: import('$lib/types/index').HomeworkMetadata;
   export let linkable: boolean;
   export let hw_id: string;
   // fallback to the default language
   import type { TFunction } from 'i18next';
-  import t from '~/lib/i18n';
+  import t from '$lib/i18n';
   
   export let lang: string | null = '';
   export let __: TFunction = t;

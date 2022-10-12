@@ -1,5 +1,5 @@
-import { cfg } from '~/lib/config';
-import type { HomeworkMetadata } from '~/lib/types';
+import { cfg } from '$lib/config';
+import type { HomeworkMetadata } from '$lib/types';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ params }) => {

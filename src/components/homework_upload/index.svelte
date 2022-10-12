@@ -2,9 +2,9 @@
   export let hw_id: string;
 
   import ConditionView from '../condition_view/index.svelte';
-  import base64ArrayBuffer from '~/lib/base64ArrayBuffer';
-  import { cfg } from '~/lib/config';
-  import type { FileUploadData } from '~/lib/types/components';
+  import base64ArrayBuffer from '$lib/base64ArrayBuffer';
+  import { cfg } from '$lib/config';
+  import type { FileUploadData } from '$lib/types/components';
 
   const rules = cfg.homework.entries[parseInt(hw_id)].rules;
 
@@ -157,7 +157,7 @@
 
   // fallback to the default language
   import type { TFunction } from 'i18next';
-  import t from '~/lib/i18n';
+  import t from '$lib/i18n';
   
   export let __: TFunction = t;
 </script>

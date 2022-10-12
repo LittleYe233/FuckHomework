@@ -5,7 +5,7 @@
   const { __, lang } = data;
 
   import HomeworkSlot from '~/components/homework_slot.svelte';
-  import { cfg } from '~/lib/config';
+  import { cfg } from '$lib/config';
 
   const homeworkSlots = cfg.homework.entries;
 </script>

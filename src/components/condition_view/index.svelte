@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AssignmentRuleLoaders } from '~/lib/types';
+  import type { AssignmentRuleLoaders } from '$lib/types';
   import FilenameCheck from './rules/filename_check.svelte';
 
   export let rules: AssignmentRuleLoaders;

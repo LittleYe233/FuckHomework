@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { cfg } from '~/lib/config';
-  import type { FilenameCheckAssignmentRuleLoader } from '~/lib/rules';
-  import type { AssignmentConfig } from '~/lib/types';
+  import { cfg } from '$lib/config';
+  import type { FilenameCheckAssignmentRuleLoader } from '$lib/rules';
+  import type { AssignmentConfig } from '$lib/types';
 
   export let rule: FilenameCheckAssignmentRuleLoader;
   export let hw_id: number = -1;

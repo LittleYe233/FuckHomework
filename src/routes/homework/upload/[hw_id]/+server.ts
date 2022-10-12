@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { error, json } from '@sveltejs/kit';
-import { cfg, parseVars } from '~/lib/config';
-import type { FileUploadData } from '~/lib/types';
+import { cfg, parseVars } from '$lib/config';
+import type { FileUploadData } from '$lib/types';
 import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ params, request }) => {
