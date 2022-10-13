@@ -33,8 +33,16 @@
     },
     "json.schemas": [
       {
-        "fileMatch": ["/locales/*.json"],
-        "url": "/schemas/locales.json"
+        "fileMatch": ["/locales/*/common.json"],
+        "url": "/schemas/locales/common.json"
+      },
+      {
+        "fileMatch": ["/locales/*/homework_slot.json"],
+        "url": "/schemas/locales/homework_slot.json"
+      },
+      {
+        "fileMatch": ["/locales/*/homework_upload.json"],
+        "url": "/schemas/locales/homework_upload.json"
       }
     ]
   }
