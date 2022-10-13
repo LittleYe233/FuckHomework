@@ -1,5 +1,7 @@
 # FuckHomework
 
+![GitHub](https://img.shields.io/github/license/LittleYe233/FuckHomework?color=%23f5aab9&style=flat-square) ![GitHub package.json version](https://img.shields.io/github/package-json/v/LittleYe233/FuckHomework?color=%235bcefa&style=flat-square) ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/w/LittleYe233/FuckHomework/dev?color=green&style=flat-square)
+
 ## Introduction
 
 This is a SvelteKit web application to blame and manage received homework of yours.
