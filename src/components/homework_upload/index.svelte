@@ -157,9 +157,8 @@
 
   // fallback to the default language
   import type { TFunction } from 'i18next';
-  import t from '$lib/i18n';
   
-  export let __: TFunction = t;
+  export let __: TFunction;
 </script>
 
 <div class="relative my-4 rounded-2xl bg-white px-8 py-6 ring-1 ring-gray-900/5 transition ease-in-out hover:shadow-xl duration-300">

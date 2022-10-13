@@ -6,10 +6,9 @@
   export let hw_id: string;
   // fallback to the default language
   import type { TFunction } from 'i18next';
-  import t from '$lib/i18n';
   
   export let lang: string | null = '';
-  export let __: TFunction = t;
+  export let __: TFunction;
 
   /**
    * Get the link with fixed search parameters.

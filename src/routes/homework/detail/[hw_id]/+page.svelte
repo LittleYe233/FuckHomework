@@ -39,7 +39,7 @@
     <h2 class="mb-4 text-2xl font-bold">{__('heading.homework.list')}</h2>
     <!-- Homework list container -->
     <div>
-      <HomeworkSlot {metadata} linkable={false} {hw_id} />
+      <HomeworkSlot {metadata} linkable={false} {hw_id} {__} />
     </div>
   </div>
   <div>
