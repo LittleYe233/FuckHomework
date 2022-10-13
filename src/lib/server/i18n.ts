@@ -99,7 +99,7 @@ export async function getI18nOptionsByLang(lng: string): Promise<InitOptions> {
   }
   result.fallbackLng = [lng];
   result.lng = lng;
-  result.resources = { lng: result.resources[lng] };
+  result.resources = Object.fromEntries([[lng, result.resources[lng]]]);
 
   return result;
 }
