@@ -4,21 +4,7 @@
       "submission": "作业上传",
       "list": "作业列表"
     },
-    "control_pad": "控制面板",
-    "components": {
-      "homework_slot": {
-        "semester": "学期",
-        "subject": "课程",
-        "chapter": "章节",
-        "due_time": "截止时间",
-        "submission_method": "提交方式"
-      },
-      "homework_upload": {
-        "upload_homework": "上传作业",
-        "result": "结果",
-        "output_nerd": "调试输出"
-      }
-    }
+    "control_pad": "控制面板"
   },
   "message": {
     "homework": {

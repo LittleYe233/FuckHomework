@@ -1,0 +1,9 @@
+{
+  "heading": {
+    "semester": "学期",
+    "subject": "课程",
+    "chapter": "章节",
+    "due_time": "截止时间",
+    "submission_method": "提交方式"
+  }
+}

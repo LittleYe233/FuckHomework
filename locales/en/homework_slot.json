@@ -1,0 +1,9 @@
+{
+  "heading": {
+    "semester": "Semester",
+    "subject": "Subject",
+    "chapter": "Chapter",
+    "due_time": "Due time",
+    "submission_method": "Submission method"
+  }
+}
