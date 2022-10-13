@@ -8,6 +8,7 @@ This is a SvelteKit web application to blame and manage received homework of you
 
 - Succinct Web UI
 - Custom validation rules
+- Internationalization
 
 ## Getting started
 
