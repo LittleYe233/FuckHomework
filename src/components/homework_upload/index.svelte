@@ -162,7 +162,7 @@
 </script>
 
 <div class="relative my-4 rounded-2xl bg-white px-8 py-6 ring-1 ring-gray-900/5 transition ease-in-out hover:shadow-xl duration-300">
-  <h3 class="mb-3 text-xl font-bold">{__('heading.components.homework_upload.upload_homework')}</h3>
+  <h3 class="mb-3 text-xl font-bold">{__('homework_upload:heading.upload_homework')}</h3>
   <!-- detailed information -->
   <p>Please upload your homework files and make sure they meet the conditions below:</p>
   <ConditionView {rules} hw_id={parseInt(hw_id)} />
@@ -175,7 +175,7 @@
     />
   </form>
   <div class="relative mt-2">
-    <h4 class="mb-2 text-lg font-bold">{__('heading.components.homework_upload.result')}</h4>
+    <h4 class="mb-2 text-lg font-bold">{__('homework_upload:heading.result')}</h4>
     {#await promise}
       <div class="relative mt-2 p-2">Awaiting result...</div>
     {:then resp}
@@ -204,7 +204,7 @@
     {/await}
   </div>
   <div class="relative mt-2">
-    <h4 class="mb-2 text-lg font-bold">{__('heading.components.homework_upload.output_nerd')}</h4>
+    <h4 class="mb-2 text-lg font-bold">{__('homework_upload:heading.output_nerd')}</h4>
     <details>
       <summary>Click to show/hide</summary>
 

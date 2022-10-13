@@ -46,23 +46,23 @@
   <table class="homework-slot">
     <tbody>
       <tr>
-        <td class="pr-6 font-bold">{__('heading.components.homework_slot.semester')}</td>
+        <td class="pr-6 font-bold">{__('homework_slot:heading.semester')}</td>
         <td>{metadata.semester ?? ''}</td>
       </tr>
       <tr>
-        <td class="pr-6 font-bold">{__('heading.components.homework_slot.subject')}</td>
+        <td class="pr-6 font-bold">{__('homework_slot:heading.subject')}</td>
         <td>{metadata.subject ?? ''}</td>
       </tr>
       <tr>
-        <td class="pr-6 font-bold">{__('heading.components.homework_slot.chapter')}</td>
+        <td class="pr-6 font-bold">{__('homework_slot:heading.chapter')}</td>
         <td>{metadata.chapter ?? ''}</td>
       </tr>
       <tr>
-        <td class="pr-6 font-bold">{__('heading.components.homework_slot.due_time')}</td>
+        <td class="pr-6 font-bold">{__('homework_slot:heading.due_time')}</td>
         <td>{parseDateTime(metadata.dueTime)}</td>
       </tr>
       <tr>
-        <td class="pr-6 font-bold">{__('heading.components.homework_slot.submission_method')}</td>
+        <td class="pr-6 font-bold">{__('homework_slot:heading.submission_method')}</td>
         <td>{metadata.submissionMethod ?? ''}</td>
       </tr>
     </tbody>
