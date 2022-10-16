@@ -1,5 +1,6 @@
 <script lang="ts">
   export let hw_id: string;
+  export let lang: string = '';
 
   import ConditionView from '../condition_view/index.svelte';
   import base64ArrayBuffer from '$lib/base64ArrayBuffer';
@@ -165,7 +166,7 @@
   <h3 class="mb-3 text-xl font-bold">{__('homework_upload:heading.upload_homework')}</h3>
   <!-- detailed information -->
   <p>{__('homework_upload:normal.description')}</p>
-  <ConditionView {rules} hw_id={parseInt(hw_id)} />
+  <ConditionView {rules} hw_id={parseInt(hw_id)} {lang} {__} />
   <form on:submit|preventDefault={submitClickFunc} class="relative flex flex-col mb-2">
     <input type="file" multiple bind:files={uploadedFiles} class="mb-1.5" />
     <input

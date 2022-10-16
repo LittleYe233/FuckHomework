@@ -44,6 +44,6 @@
   </div>
   <div>
     <h2 class="mb-4 text-2xl font-bold">{__('heading.control_pad')}</h2>
-    <HomeworkUpload {hw_id} {__} />
+    <HomeworkUpload {hw_id} {__} lang={lang || ''} />
   </div>
 </div>

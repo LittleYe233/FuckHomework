@@ -5,6 +5,7 @@
 
   export let rule: FilenameCheckAssignmentRuleLoader;
   export let hw_id: number = -1;
+  export const lang: string = '';
 
   let hw: AssignmentConfig | undefined;
   if (hw_id !== -1) {
@@ -35,12 +36,17 @@
       renderedPatterns.push(p);
     }
   });
+
+  // fallback to the default language
+  import type { TFunction } from 'i18next';
+  
+  export let __: TFunction;
 </script>
 
 <div class="inline-grid">
   <p>
-    Names of all files should {#if rule.priority === 'whitelist'}<span class="font-bold">be one of</span>{:else}<span>not be any of</span
-      >{/if} the following patterns:
+    {__('filename_check:normal.names_of_all_files')} {#if rule.priority === 'whitelist'}<span class="font-bold">{__('filename_check:normal.one_of')}</span>{:else}<span>{__('filename_check:normal.not_any_of')}</span
+      >{/if} {__('filename_check:normal.following_patterns')}
   </p>
   <ul class="list-inside list-disc">
     {#each renderedPatterns as p}
