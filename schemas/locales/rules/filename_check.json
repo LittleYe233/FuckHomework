@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "locales.rules.filename_check",
+  "type": "object",
+  "description": "Schema for locales of \"filename_check\" namespace. They are for i18next package.",
+  "properties": {
+    "normal": {
+      "type": "object",
+      "properties": {
+        "names_of_all_files": {
+          "type": "string"
+        },
+        "one_of": {
+          "type": "string"
+        },
+        "not_any_of": {
+          "type": "string"
+        },
+        "following_patterns": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

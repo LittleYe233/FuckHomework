@@ -1,0 +1,8 @@
+{
+  "normal": {
+    "names_of_all_files": "Names of all files should",
+    "one_of": "be one of",
+    "not_any_of": "not be any of",
+    "following_patterns": "the following patterns:"
+  }
+}

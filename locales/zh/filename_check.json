@@ -1,0 +1,8 @@
+{
+  "normal": {
+    "names_of_all_files": "所有文件的文件名必须",
+    "one_of": "符合以下规则的其中一个",
+    "not_any_of": "不符合以下规则的任何一个",
+    "following_patterns": "："
+  }
+}
