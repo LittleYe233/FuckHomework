@@ -43,6 +43,10 @@
       {
         "fileMatch": ["/locales/*/homework_upload.json"],
         "url": "/schemas/locales/homework_upload.json"
+      },
+      {
+        "fileMatch": ["/locales/*/filename_check.json"],
+        "url": "/schemas/locales/rules/filename_check.json"
       }
     ]
   }
