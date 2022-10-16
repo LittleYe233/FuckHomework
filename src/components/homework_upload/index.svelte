@@ -164,7 +164,7 @@
 <div class="relative my-4 rounded-2xl bg-white px-8 py-6 ring-1 ring-gray-900/5 transition ease-in-out hover:shadow-xl duration-300">
   <h3 class="mb-3 text-xl font-bold">{__('homework_upload:heading.upload_homework')}</h3>
   <!-- detailed information -->
-  <p>Please upload your homework files and make sure they meet the conditions below:</p>
+  <p>{__('homework_upload:normal.description')}</p>
   <ConditionView {rules} hw_id={parseInt(hw_id)} />
   <form on:submit|preventDefault={submitClickFunc} class="relative flex flex-col mb-2">
     <input type="file" multiple bind:files={uploadedFiles} class="mb-1.5" />
@@ -177,20 +177,20 @@
   <div class="relative mt-2">
     <h4 class="mb-2 text-lg font-bold">{__('homework_upload:heading.result')}</h4>
     {#await promise}
-      <div class="relative mt-2 p-2">Awaiting result...</div>
+      <div class="relative mt-2 p-2">{__('homework_upload:normal.await_result')}</div>
     {:then resp}
       <!-- avoid `resp` being undefined -->
       {#if resp}
         <div class="relative mt-2 grid grid-cols-[repeat(2,_minmax(0,_max-content))] p-2">
-          <span class="font-bold border-2 p-1.5">Status</span>
+          <span class="font-bold border-2 p-1.5">{__('homework_upload:response.status')}</span>
           {#if resp.result.status === 'Passed'}
-            <span class="border-2 p-1.5 text-[#5BCEFA]">Passed</span>
+            <span class="border-2 p-1.5 text-[#5BCEFA]">{__('homework_upload:response.passed')}</span>
           {:else if resp.result.status === 'Failed'}
-            <span class="border-2 p-1.5 text-[#F5AAB9]">Failed</span>
+            <span class="border-2 p-1.5 text-[#F5AAB9]">{__('homework_upload:response.failed')}</span>
           {/if}
-          <span class="font-bold border-2 p-1.5">Message</span><span class="border-2 p-1.5">{resp.result.message}</span>
+          <span class="font-bold border-2 p-1.5">{__('homework_upload:response.message')}</span><span class="border-2 p-1.5">{resp.result.message}</span>
           {#if resp.result.files.length}
-            <span class="font-bold border-2 p-1.5">Filename</span><span class="font-bold border-2 p-1.5">Verdict</span>
+            <span class="font-bold border-2 p-1.5">{__('homework_upload:response.filename')}</span><span class="font-bold border-2 p-1.5">{__('homework_upload:response.verdict')}</span>
             {#each resp.result.files as f}
               <span class="break-all border-2 p-1.5">
                 <code>{f.filename}</code>
@@ -199,23 +199,23 @@
           {/if}
         </div>
       {:else}
-        <div class="relative mt-2">Awaiting result...</div>
+        <div class="relative mt-2">{__('homework_upload:normal.await_result')}</div>
       {/if}
     {/await}
   </div>
   <div class="relative mt-2">
     <h4 class="mb-2 text-lg font-bold">{__('homework_upload:heading.output_nerd')}</h4>
     <details>
-      <summary>Click to show/hide</summary>
+      <summary>{__('homework_upload:control.click_to_show_hide')}</summary>
 
       <code class="break-all whitespace-pre-line">
         {#await promise}
-          Awaiting result...
+          {__('homework_upload:normal.await_result')}
         {:then resp}
           {#if resp}
             {resp.nerd}
           {:else}
-            Awaiting result...
+            {__('homework_upload:normal.await_result')}
           {/if}
         {/await}
       </code>

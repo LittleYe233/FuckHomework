@@ -3,5 +3,20 @@
     "upload_homework": "上传作业",
     "result": "结果",
     "output_nerd": "调试输出"
+  },
+  "normal": {
+    "description": "请上传你的作业，并保证它们能满足如下条件：",
+    "await_result": "等待结果……"
+  },
+  "response": {
+    "status": "状态",
+    "passed": "通过",
+    "failed": "拒绝",
+    "message": "详细消息",
+    "filename": "文件名",
+    "verdict": "判定"
+  },
+  "control": {
+    "click_to_show_hide": "单击显示/隐藏"
   }
 }

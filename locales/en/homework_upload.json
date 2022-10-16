@@ -3,5 +3,20 @@
     "upload_homework": "Upload homework",
     "result": "Result",
     "output_nerd": "Output for Nerds"
+  },
+  "normal": {
+    "description": "Please upload your homework files and make sure they meet the conditions below:",
+    "await_result": "Awaiting result..."
+  },
+  "response": {
+    "status": "Status",
+    "passed": "Passed",
+    "failed": "Failed",
+    "message": "Message",
+    "filename": "Filename",
+    "verdict": "Verdict"
+  },
+  "control": {
+    "click_to_show_hide": "Click to show/hide"
   }
 }

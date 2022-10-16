@@ -17,6 +17,48 @@
           "type": "string"
         }
       }
+    },
+    "normal": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "await_result": {
+          "type": "string"
+        }
+      }
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "passed": {
+          "type": "string"
+        },
+        "failed": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "verdict": {
+          "type": "string"
+        }
+      }
+    },
+    "control": {
+      "type": "object",
+      "properties": {
+        "click_to_show_hide": {
+          "type": "string"
+        }
+      }
     }
   }
 }
