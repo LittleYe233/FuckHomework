@@ -53,6 +53,7 @@ Also you can copy or rename `config.example.js` to `config.js` which includes mo
 - More optional visualization
 - Due time restriction
 - Classification for ongoing and finished homework
+- Logger
 
 ## Technology stack
 
