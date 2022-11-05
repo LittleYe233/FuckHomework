@@ -11,4 +11,8 @@ declare namespace App {
   // interface Session {}
 
   // interface Stuff {}
+
+  interface Error {
+    message: string;
+  }
 }
