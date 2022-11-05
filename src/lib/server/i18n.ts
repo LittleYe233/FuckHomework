@@ -83,7 +83,7 @@ export const restI18nOptions: InitOptions = {
   interpolation: {
     escapeValue: false
   },
-  debug: true
+  debug: false
 };
 
 export async function getI18nOptionsByLang(lng: string): Promise<InitOptions> {
