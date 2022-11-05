@@ -1,5 +1,6 @@
 <script lang="ts">
   import { cfg } from '$lib/config';
+  import { getConsoleLogger } from '~/lib/logger';
   import type { FilenameCheckAssignmentRuleLoader } from '$lib/rules';
   import type { AssignmentConfig } from '$lib/types';
 
@@ -11,6 +12,8 @@
   if (hw_id !== -1) {
     hw = cfg.homework.entries[hw_id];
   }
+
+  const logger = getConsoleLogger();
 
   const renderedPatterns: String[] = [];
   (rule.priority === 'whitelist' ? rule.whitelist : rule.blacklist).forEach((li) => {
@@ -31,7 +34,8 @@
       });
     }
     if (renderedPatterns.includes(p)) {
-      console.debug(`Filename pattern duplicates with others. Rule: ${rule}. Pattern: ${p}.`);
+      logger.verbose(`Filename pattern duplicates with others. Rule: ${rule}. Pattern: ${p}.`);
+      // console.debug(`Filename pattern duplicates with others. Rule: ${rule}. Pattern: ${p}.`);
     } else {
       renderedPatterns.push(p);
     }
