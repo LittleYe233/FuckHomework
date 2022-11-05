@@ -34,7 +34,7 @@ export const getTransport = (filename?: string | void | (() => string | undefine
   return new winston.transports.File({
     filename: _f,
     format: fileLoggerFormat,
-    level: 'trace'
+    level: 'silly'
   });
 };
 
