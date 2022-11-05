@@ -1,6 +1,11 @@
 import type { Handle, HandleServerError } from '@sveltejs/kit';
 import type { Error } from './lib/types';
 import { getConsoleFileLogger } from './lib/server/logger';
+/**
+ * @note This line is just to trigger `./lib/server/logger` script.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import cfg from './lib/server/config';
 
 const logger = getConsoleFileLogger();
 
