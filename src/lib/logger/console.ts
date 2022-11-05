@@ -1,3 +1,9 @@
+/**
+ * This is a transportation from winston.
+ * 
+ * @see https://github.com/winstonjs/winston/blob/a584db39359312058cb639c7bde024f87e6155ce/lib/winston/transports/console.js
+ */
+
 import TransportStream from 'winston-transport';
 import { LEVEL, MESSAGE } from 'triple-beam';
 import type { ConsoleTransportOptions } from 'winston/lib/winston/transports';
@@ -24,7 +30,8 @@ export default class extends TransportStream {
   }
 
   log(info: { [x: symbol]: string }, callback: () => void) {
-    setImmediate(() => this.emit('logged', info));
+    /** @note May be still buggy, */
+    this.emit('logged', info);
 
     if (this.stderrLevels[info[LEVEL]]) {
       console.error(info[MESSAGE]);
