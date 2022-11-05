@@ -17,6 +17,8 @@
     "format:staged": "npm run test:lint:fix && pretty-quick --staged --verbose --pattern '**/*.{json,html}'"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "@sveltejs/adapter-node": "^1.0.0-next.96",
     "@sveltejs/kit": "^1.0.0-next.511",
     "@types/cookie": "^0.5.1",
