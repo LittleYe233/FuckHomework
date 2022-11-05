@@ -11,6 +11,7 @@ This is a SvelteKit web application to blame and manage received homework of you
 - Succinct Web UI
 - Custom validation rules
 - Internationalization
+- Logger on both client- and server-side
 
 ## Getting started
 
@@ -53,7 +54,6 @@ Also you can copy or rename `config.example.js` to `config.js` which includes mo
 - More optional visualization
 - Due time restriction
 - Classification for ongoing and finished homework
-- Logger
 
 ## Technology stack
 
