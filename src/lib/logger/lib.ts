@@ -1,4 +1,6 @@
 import { COLORS, MAX_LEVEL_LENGTH } from './common';
+
+import Console from './console';
 import type { LEVEL } from './common';
 import winston from 'winston';
 
@@ -17,12 +19,13 @@ const consoleLoggerFormat = winston.format.combine(
  * @note Please please note that some logs may output to the browser rather than
  * the console on the server when using this logger!
  */
-const consoleLoggerTransport = new winston.transports.Console({
+const consoleLoggerTransport = new Console({
   format: consoleLoggerFormat,
-  level: 'trace'
+  level: 'silly'
 });
 export default consoleLoggerTransport;
 
-export const getConsoleLogger = winston.createLogger({
-  transports: [consoleLoggerTransport]
-});
+export const getConsoleLogger = () =>
+  winston.createLogger({
+    transports: [consoleLoggerTransport]
+  });
