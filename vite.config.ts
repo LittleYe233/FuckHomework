@@ -1,6 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { fileURLToPath } from 'url';
-import { defineConfig, UserConfig } from 'vite';
+import { UserConfig } from 'vite';
 import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
@@ -25,7 +25,12 @@ const config: UserConfig = {
     fs: {
       strict: false
     },
-    port: 3000
+    port: 3000,
+    // https://vitejs.dev/config/server-options.html#server-hmr
+    strictPort: true,
+    hmr: {
+      clientPort: 3000
+    }
   },
   optimizeDeps: {
     esbuildOptions: {
