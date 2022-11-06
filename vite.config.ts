@@ -29,7 +29,7 @@ const config: UserConfig = {
     // https://vitejs.dev/config/server-options.html#server-hmr
     strictPort: true,
     hmr: {
-      clientPort: 3000
+      port: 3001
     }
   },
   optimizeDeps: {
