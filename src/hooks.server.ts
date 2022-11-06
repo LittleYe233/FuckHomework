@@ -10,7 +10,7 @@ import cfg from './lib/server/config';
 const logger = getConsoleFileLogger();
 
 export const handle: Handle = async ({ event, resolve }) => {
-  const clientAddress = event.getClientAddress();
+  const clientAddress = event.request.headers.get('X-Forwarded-For') || event.request.headers.get('X-Real-IP') || event.getClientAddress();
   const method = event.request.method;
   const url = event.url;
   
