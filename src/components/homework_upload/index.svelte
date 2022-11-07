@@ -130,8 +130,8 @@
       )
       .catch((err) => {
         resultFriendly.status = 'Failed';
-        resultFriendly.message += ' ' + JSON.stringify(err);
-        return 'Error: ' + JSON.stringify(err);
+        resultFriendly.message += ' ' + err;
+        return 'Error: ' + err;
       });
 
     return {
