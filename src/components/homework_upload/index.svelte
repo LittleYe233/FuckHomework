@@ -116,7 +116,13 @@
             }
           } else {
             resultFriendly.status = 'Failed';
-            resultFriendly.message += ' ' + (await resp.json()).message;
+            let text;
+            try {
+              text = (await resp.clone().json()).message;
+            } catch {
+              text = resp.status.toString() + ' ' + resp.statusText;
+            }
+            resultFriendly.message += ' ' + text;
           }
           return (
             'Response: ' +
