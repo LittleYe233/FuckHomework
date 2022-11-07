@@ -1,14 +1,16 @@
-import { sveltekit } from '@sveltejs/kit/vite';
-import { fileURLToPath } from 'url';
-import { UserConfig } from 'vite';
-import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import { UserConfig } from 'vite';
+import { fileURLToPath } from 'url';
+import lodash from 'lodash';
+import projectConfig from './config.js';
+import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
+import { sveltekit } from '@sveltejs/kit/vite';
 
 /**
  * @see https://medium.com/@ftaioli/using-node-js-builtin-modules-with-vite-6194737c2cd2
  */
-const config: UserConfig = {
+const defaultConfig: UserConfig = {
   plugins: [sveltekit()],
   /**
    * @see https://stackoverflow.com/questions/70648181/how-to-resolve-absolute-path-using-vite-and-eslint-in-svelte
@@ -52,4 +54,4 @@ const config: UserConfig = {
   }
 };
 
-export default config;
+export default lodash.merge({}, defaultConfig, projectConfig.vite ?? {});

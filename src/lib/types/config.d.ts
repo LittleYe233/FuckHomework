@@ -1,4 +1,5 @@
 import { DeepRequired } from 'utility-types';
+import type { UserConfigExport } from 'vite';
 import type { InfoSlot } from './components';
 import type { RawAssignmentRules, AssignmentRuleLoaders } from './rules';
 
@@ -55,7 +56,7 @@ export interface HomeworkConfig extends DeepRequired<RawHomeworkConfig> {
 
 export interface RawProjectConfig {
   version: number;
-  server?: RawProjectServerConfig;
+  vite?: UserConfigExport;
   homework?: RawHomeworkConfig;
 }
 export interface ProjectConfig extends DeepRequired<RawProjectConfig> {

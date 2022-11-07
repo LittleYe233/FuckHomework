@@ -1,10 +1,12 @@
 /** @type {import('./src/lib/types/config').RawProjectConfig} */
 export default {
   version: 1,
-  server: {
-    host: '0.0.0.0',
-    port: 3000,
-    strictPort: false
+  vite: {
+    server: {
+      host: '0.0.0.0',
+      port: 3000,
+      strictPort: false
+    }
   },
   homework: {
     savePath: './data/homework',
